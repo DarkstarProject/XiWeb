@@ -1,0 +1,75 @@
+#gmap { text-decoration:none; display:block; width:750px; height:750px; background:url(../images/Vanadiel_map.jpg); position:relative; margin:0 auto 2em auto;}
+a { text-decoration: none; color: black; }
+
+a#title2, a#title2:visited { text-decoration:none; display:block; width:400px; height:0; padding-top:260px; position:absolute; left:0; top:0; cursor:default; text-decoration:none;}
+* html a#title2 {height:260px; height:0;}
+#gmap a#title2:hover { overflow:visible; color:#c00; height: 5px; width: 5px;}
+
+a#sandoria { text-decoration: none; display:block; width:50px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:247px; top:226px;}
+a#sandoria:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#ronfaure { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:251px; top:257px;}
+a#ronfaure:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#bastok { text-decoration:none; display:block; width:50px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:311px; top:447px;}
+a#bastok:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#zulkheim { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:259px; top:339px;}
+a#zulkheim:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#windurst { text-decoration:none; display:block; width:50px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:499px; top:472px;}
+a#windurst:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#valdeaunia { text-decoration:none; display:block; width:100px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:231px; top:161px;}
+a#valdeaunia:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#norvallen{ text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:346px; top:218px;}
+a#norvallen:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#volbow { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:133px; top:374px;}
+a#volbow:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#sarutabaruta { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:511px; top:425px;}
+a#sarutabaruta:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#elshimo { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:577px; top:566px;}
+a#elshimo:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#elshimo2 { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:642px; top:566px;}
+a#elshimo2:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#kuzotz { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:119px; top:514px;}
+a#kuzotz:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#tavnazian { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:102px; top:338px;}
+a#tavnazian:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#fauregandi { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:364px; top:183px;}
+a#fauregandi:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#qufim { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:450px; top:229px;}
+a#qufim:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#jeuno { text-decoration:none; display:block; width:50px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:413px; top:288px;}
+a#jeuno:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#gustaberg { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:242px; top:456px;}
+a#gustaberg:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#tulia { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:485px; top:183px;}
+a#tulia:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#litelor { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:606px; top:300px;}
+a#litelor:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#kolshushu { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:545px; top:373px;}
+a#kolshushu:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#aragoneu { text-decoration:none; display:block; width:50px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:520px; top:313px;}
+a#aragoneu:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#derfland { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:365px; top:334px;}
+a#derfland:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}
+
+a#movalpolos { text-decoration:none; display:block; width:10px; height:0; padding-top:10px; overflow:hidden; position:absolute; left:352px; top:424px;}
+a#movalpolos:hover { overflow:visible; height: 83px; width: 346px; border: 2px solid black; background: url('../images/emptybox.jpg'); color: white; padding-top: 5px; padding-left: 10px; padding-right: 10px;}

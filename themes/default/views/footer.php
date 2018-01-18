@@ -1,0 +1,6 @@
+<?php
+$output .= '
+  </body>
+</html>
+';
+?>

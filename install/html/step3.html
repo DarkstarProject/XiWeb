@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>DSPWeb - Installation</title>
+    <link type="text/css" rel="stylesheet" href="css/uikit.gradient.css" media="all" />
+    <link type="text/css" rel="stylesheet" href="css/components/progress.css" media="all" />
+    <script src="js/uikit.min.js"></script>
+  </head>
+  
+  <body>
+  <div class="uk-grid uk-grid-condensed">
+    <div class="uk-width-1-1">
+      <div class="uk-panel uk-panel-box">
+        <h3 class="uk-panel-title">DSPWeb Installation - DSPWeb Configuration</h3>
+        <div class="uk-progress uk-progress-striped uk-active uk-text-center">
+          <div class="uk-progress-bar uk-text-center" style="width: 100%;"></div>
+        </div>
+      </div>
+      <div class="uk-alert uk-alert-danger uk-align-center uk-width-1-2"><i class="uk-icon uk-icon-times"></i> Please correct the following errors:
+      <ul>
+        <li>Server name cannot be blank.</li>
+      </ul></div>
+      <div class="uk-panel uk-panel-box">
+        <h3 class="uk-panel-title">DSPWeb Configuration</h3>
+        <form class="uk-form uk-form-horizontal">
+          <div class="uk-form-row">
+            <label class="uk-form-label">Server Name:</label>
+            <div class="uk-form-controls"><input type="text" placeholder="server name" class="uk-form-danger" />
+              <span class="uk-form-inline-help uk-text-danger">Required</span>
+            </div>
+          </div>
+          <div class="uk-form-row">
+            <label class="uk-form-label">Allow Account Registration:</label>
+            <div class="uk-form-controls"><input type="checkbox" class="uk-form-success" /></div>
+          </div>
+          <div class="uk-form-row">
+            <label class="uk-form-label">Allow Character Creation:</label>
+            <div class="uk-form-controls"><input type="checkbox" class="uk-form-success" /></div>
+          </div>
+          <div class="uk-form-row">
+            <label class="uk-form-label">Language:</label>
+            <div class="uk-form-controls">
+              <select>
+                <option selected>English</option>
+                <option>Spanish</option>
+                <option>Russian</option>
+              </select>
+            </div>
+          </div>
+          <div class="uk-form-row">
+            <label class="uk-form-label">Theme:</label>
+            <div class="uk-form-controls">
+              <select>
+                <option selected>Default</option>
+                <option>All Black</option>
+                <option>All White</option>
+              </select>
+            </div>
+          </div>
+          <div class="uk-form-row">
+            <button class="uk-button uk-button-secondary">Back</button>
+            <button class="uk-button uk-button-secondary">Complete Installation</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>  
+  </body>
+</html>
