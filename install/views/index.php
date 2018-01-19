@@ -51,6 +51,16 @@
 							<input type="text" class="form-control" name="databaseName" '.(!empty($databaseName) ? 'value='.$databaseName.'' : '').' aria-describedby="databaseNameHelp" placeholder="e.g. oldschool" required>
 							<small id="databaseNameHelp" class="form-text text-muted">This is the name of the database that your FFXI server is using.</small>
 						</div>
+						<div class="form-group">
+							<label for="">Name of the FFXI Server</label>
+							<input type="text" class="form-control" name="serverName" '.(!empty($serverName) ? 'value='.$serverName.'' : '').' aria-describedby="serverNameHelp" placeholder="e.g. My FFXI Server" required>
+							<small id="serverNameHelp" class="form-text text-muted">This is the display name of your server.  It can be anything you want other people to call your sever.</small>
+						</div>
+						<div class="form-group">
+							<label for="">Address of the FFXI Server</label>
+							<input type="text" class="form-control" name="serverAddress" '.(!empty($serverAddress) ? 'value='.$serverAddress.'' : '').' aria-describedby="serverAddressHelp" placeholder="e.g. localhost">
+							<small id="serverAddressHelp" class="form-text text-muted">This is the address of the FFXI server to check it\'s status. (Probably on the same server as the database.)</small>
+						</div>
 						<input type="hidden" name="install" value=1" />
 						<button type="submit" class="btn btn-primary">Complete Installation</button>
 					</form>

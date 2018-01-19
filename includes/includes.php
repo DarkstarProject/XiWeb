@@ -59,31 +59,57 @@ $skill_ids = array(
   'rid' => 58,
 );
 
+$jobNames = array(
+		0 => '',     // None
+		1 => 'Warrior',  // Warrior
+  		2 => 'Monk',  // Monk
+  		3 => 'White Mage',  // White Mage
+  		4 => 'Black Mage',  // Black Mage
+  		5 => 'Red Mage',  // Red mage
+  		6 => 'Thief',  // Thief
+  		7 => 'Paladin',  // Paladin
+  		8 => 'Dark Knight',  // Dark Knight
+  		9 => 'Beastmaster',  // Beastmaster
+  		10 => 'Bard', // Bard
+  		11 => 'Ranger', // Ranger
+  		12 => 'Samurai', // Samurai
+  		13 => 'Ninja', // Ninja
+  		14 => 'Dragoon', // Dragoon
+  		15 => 'Summoner', // Summoner
+  		16 => 'Blue Mage', // Blue Mage
+  		17 => 'Corsair', // Corsair
+  		18 => 'Puppetmaster', // Puppetmaster
+  		19 => 'Dancer', // Dancer
+  		20 => 'Scholar', // Scholar
+  		21 => 'Geomancer', // Geomancer
+  		22 => 'Rune Fencer', // Rune fencer
+);
+
 // Jobs
-$jobs = array(
+$jobAbbreviations = array(
   0 => '',     // None
-  1 => 'war',  // Warrior
-  2 => 'mnk',  // Monk
-  3 => 'whm',  // White Mage
-  4 => 'blm',  // Black Mage
-  5 => 'rdm',  // Red mage
-  6 => 'thf',  // Thief
-  7 => 'pld',  // Paladin
-  8 => 'drk',  // Dark Knight
-  9 => 'bst',  // Beastmaster
-  10 => 'brd', // Bard
-  11 => 'rng', // Ranger
-  12 => 'sam', // Samurai
-  13 => 'nin', // Ninja
-  14 => 'drg', // Dragoon
-  15 => 'smn', // Summoner
-  16 => 'blu', // Blue Mage
-  17 => 'cor', // Corsair
-  18 => 'pup', // Puppetmaster
-  19 => 'dnc', // Dancer
-  20 => 'sch', // Scholar
-  21 => 'geo', // Geomancer
-  22 => 'run', // Rune fencer
+  1 => 'WAR',  // Warrior
+  2 => 'MNK',  // Monk
+  3 => 'WHM',  // White Mage
+  4 => 'BLM',  // Black Mage
+  5 => 'RDM',  // Red mage
+  6 => 'THF',  // Thief
+  7 => 'PLD',  // Paladin
+  8 => 'DRK',  // Dark Knight
+  9 => 'BST',  // Beastmaster
+  10 => 'BRD', // Bard
+  11 => 'RNG', // Ranger
+  12 => 'SAM', // Samurai
+  13 => 'NIN', // Ninja
+  14 => 'DRG', // Dragoon
+  15 => 'SMN', // Summoner
+  16 => 'BLU', // Blue Mage
+  17 => 'COR', // Corsair
+  18 => 'PUP', // Puppetmaster
+  19 => 'DNC', // Dancer
+  20 => 'SCH', // Scholar
+  21 => 'GEO', // Geomancer
+  22 => 'RUN', // Rune fencer
 );
 
 // Equipment slot IDs

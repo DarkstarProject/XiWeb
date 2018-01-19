@@ -25,8 +25,6 @@
 
 	}
 
-	//$theme = 'default';
-
 	//These php files generate the html content to display
 	include_once('themes/'.$theme.'/views/header.php');
 	include_once('themes/'.$theme.'/views/navbar.php');

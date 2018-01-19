@@ -53,7 +53,7 @@
 	if (!empty($_POST['install'])) {
 
 		//Check to make sure we have everything.  It not, tell the user.  If so, continue on
-		if (empty($_POST['databaseHost']) || empty($_POST['databasePort']) || empty($_POST['databaseName'])) {
+		if (empty($_POST['databaseHost']) || empty($_POST['databasePort']) || empty($_POST['databaseName']) || empty($_POST['serverName'])) {
 			// If the required fields are empty, thrown an error.  Otherwise, repopulate the fields with them so the user doesn't have to type them back in
 			//Database Host
     		if (empty($_POST['databaseHost'])) {
@@ -94,6 +94,22 @@
 		      $databaseName = $_POST['databaseName'];
 		    }
 
+		    //Name of the FFXI server
+		    if (empty($_POST['serverName'])) {
+		      $_SESSION['errors']['install']['missing_servername'] = $lang['error']['install']['missing_servername'];
+		    }
+		    else {
+		      $serverName = $_POST['serverName'];
+		    }
+
+		    //Address of the FFXI server
+		    if (empty($_POST['serverAddress'])) {
+		      $_SESSION['errors']['install']['missing_serveraddress'] = $lang['error']['install']['missing_serveraddress'];
+		    }
+		    else {
+		      $serverAddress = $_POST['serverAddress'];
+		    }
+
 		} else {
 
 			//Looks like we got enough information to create the config.php file.  Let's do it!
@@ -102,20 +118,37 @@
 			$databaseUser = $_POST['databaseUser'];
 		    $databaseUserPassword = $_POST['databaseUserPassword'];
 			$databaseName = $_POST['databaseName'];
+			$serverName = $_POST['serverName'];
+			$serverAddress = $_POST['serverAddress'];
 
 			//Contents of the config.php file
 			$write_contents = '
 <?php
+
+	//This tells the site that installation is complete
 	define(\'INSTALLED\',TRUE);
 
+	//This indicates which theme to use
 	$theme = \'default\';
+
+	//This indicates which language to use
 	$language = \'en\';
 
+	//This is the connection information to the database
 	$db_host = \''.$databaseHost.'\';
 	$db_port = \''.$databasePort.'\';
 	$db_user = \''.$databaseUser.'\';
 	$db_pass = \''.$databaseUserPassword.'\';
 	$db_name = \''.$databaseName.'\';
+
+	//This is the title displayed in the browser tab and the addres to check the status of the server
+	$site_name = \''.addslashes($serverName).'\';
+	$server_address = \''.$serverAddress.'\';
+
+	//These display text on the page
+	$frontpage_title = \'XIWeb Installation\';
+	$frontpage_message = \'This is the default front-page message for your XIWeb installation. To change this, please check the configuration file.\';
+
 ?>				
 			';
 
