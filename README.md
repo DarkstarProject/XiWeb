@@ -4,6 +4,14 @@ DSP Web Front-End Interface
 XIWeb is a front-end interface for the DarkStarProject FFXI server. When installed, it can be used to offer a web portal for
 use with your FFXI private server.
 
+Features
+..* See a list of who is online currently
+..* See what's for sale in the Auction House
+
+Planned Features
+..* Users will be able to reset/recover their passwords
+..* Users will be able to view their characters outside of the game and view their inventory
+
 This project is still being developed, and any changes will be added to this file.
 
 Due to the infancy of this system, it is not available for testing. The installation system, which is required to use it, 
