@@ -1,10 +1,7 @@
 <?php
 
 	$output .= '
-			    <main role="main">
-
-			    <!-- Main jumbotron for a primary marketing message or call to action -->
-			      <div class="jumbotron">
+			      <div class="jumbotron jumbotron-fluid">
 			        <div class="container">
 			          <h1 class="display-3">'.$frontpage_title.'</h1>
 			          <p>'.$frontpage_message.'</p>
@@ -31,7 +28,6 @@
 				      </div>
 				    </div>
 
-			      </main>
 	';
 
 ?>

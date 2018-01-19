@@ -11,10 +11,13 @@
 			      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
 			        <ul class="navbar-nav mr-auto">
 			          <li class="nav-item">
-			            <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+			            <a class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
 			          </li>
 			          <li class="nav-item">
-			            <a class="nav-link" href="roster.php">Roster <span class="sr-only"></span></a>
+			            <a class="nav-link" href="roster.php">Roster<span class="sr-only"></span></a>
+			          </li>
+			          <li class="nav-item">
+			            <a class="nav-link" href="auctionHouse.php">Auction House<span class="sr-only"></span></a>
 			          </li>
 			          <!--<form class="form-inline my-2 my-lg-0">
 				          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">

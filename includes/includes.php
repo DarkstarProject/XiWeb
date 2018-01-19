@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-include_once('./lang/'.$language.'.inc.php');
+//include_once('./lang/'.$language.'.inc.php');
 $_SESSION['errors'] = '';
 
-$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';port='.$db_port.';charset=utf8', ''.$db_user.'', ''.$db_pass.''); 
+$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';port='.$db_port.';charset=utf8', ''.$db_user.'', ''.$db_pass.'');
 //$xi = new PDO('mysql:host='.$db_host.';dbname='.$xi_name.';charset=utf8', ''.$db_user.'', ''.$db_pass.'');
 
 // Character skill IDs (Combat, Ranged, Magic and Crafting)
@@ -872,6 +872,70 @@ $races = array(
   '6' => 'Tarutaru',
   '7' => 'Mithra',
   '8' => 'Galka'
+);
+
+$ahItemTypes = array(
+	0 => 'N/A',
+	1 => 'Hand-To-Hand',
+	2 => 'Daggers',
+	3 => 'Swords',
+	4 => 'Great Swords',
+	5 => 'Axes',
+	6 => 'Great Axes',
+	7 => 'Scythes',
+	8 => 'Polearms',
+	9 => 'Katana',
+	10 => 'Great Katana',
+	11 => 'Clubs',
+	12 => 'Staves',
+	13 => 'Ranged',
+	14 => 'Instruments',
+	15 => 'Ammunition',
+	16 => 'Shields',
+	17 => 'Helms',
+	18 => 'Body',
+	19 => 'Gloves',
+	20 => 'Legs',
+	21 => 'Feet',
+	22 => 'Neck',
+	23 => 'Waist',
+	24 => 'Earrings',
+	25 => 'Rings',
+	26 => 'Back',
+	28 => 'White Magic',
+	29 => 'Black Magic',
+	30 => 'Summoning',
+	31 => 'Ninjutsu',
+	32 => 'Songs',
+	33 => 'Medicines',
+	34 => 'Furnishings',
+	35 => 'Crystals',
+	36 => 'Cards',
+	37 => 'Cursed Items',
+	38 => 'Smithing',
+	39 => 'Goldsmithing',
+	40 => 'Clothcraft',
+	41 => 'Leathercraft',
+	42 => 'Bonecraft',
+	43 => 'Woodworking',
+	44 => 'Alchemy',
+	46 => 'Misc.',
+	47 => 'Fishing Gear',
+	48 => 'Pet Items',
+	49 => 'Ninja Tools',
+	50 => 'Beast-made',
+	51 => 'Fish',
+	52 => 'Meat & Eggs',
+	53 => 'Seafood',
+	54 => 'Vegetables',
+	55 => 'Soups',
+	56 => 'Bread & Rice',
+	57 => 'Sweets',
+	58 => 'Drinks',
+	59 => 'Ingredients',
+	60 => 'Dice',
+	61 => 'Automation',
+	62 => 'Grips',
 );
 
 ?>

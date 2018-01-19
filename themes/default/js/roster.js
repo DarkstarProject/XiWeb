@@ -4,7 +4,7 @@ $(document).ready(function() {
     var rosterTable = $('#onlineCharacters').DataTable({
     	"processing": true,
         "serverSide": true,
-        "ajax": "getOnlineCharacters.php"
+        "ajax": "services/getOnlineCharacters.php"
     });
 
     //Every 5 seconds, refresh the table

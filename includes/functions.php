@@ -75,6 +75,31 @@ function onlineCount() {
   }
 }
 
+//Get the count of items for sale in the auction house currently
+function auctionHouseCount(){
+
+  global $db;
+
+  $strSQL = "SELECT COUNT(*) FROM `auction_house` where sale = 0";
+  $statement = $db->prepare($strSQL);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['COUNT(*)'];
+
+  }
+  else {
+    return '0';
+  }
+
+}
+
 //Used for debugging purposes to send console messages to the client browser
 function console_log( ...$messages ){
   $msgs = '';

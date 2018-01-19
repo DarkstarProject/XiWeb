@@ -11,6 +11,7 @@
 
 	// If the system is installed, let's proceed
 	if (defined('INSTALLED')) {
+		include_once('./lang/'.$language.'.inc.php');
 		include_once('includes/includes.php');
   		include_once('includes/functions.php');
 

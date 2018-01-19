@@ -1,5 +1,15 @@
 <?php
 
+	$output .= '
+
+		<div class="jumbotron">
+	        <div class="container">
+	          <h1 class="display-3">'.$frontpage_title.'</h1>
+	          <p>'.$frontpage_message.'</p>
+	        </div>
+	     </div>
+	 ';
+
 	//If there were errors, let's show them.
 	if(!empty($_SESSION['errors']['login'])){
 		
@@ -32,6 +42,7 @@
 				</form>
 			</div>
 		</div>
+		<p style="padding:50px;">
 	';
 
 ?>

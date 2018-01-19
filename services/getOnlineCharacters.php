@@ -2,8 +2,8 @@
 
 	//Check if the config.php file has already been created.
 	//If so, include it, otherwise display an error message
-	if (file_exists('config.php')) {
-		include_once('config.php');
+	if (file_exists('../config.php')) {
+		include_once('../config.php');
 	} else {
 		$_SESSION['errors']['general'] = $lang['error']['config'];
 	}
@@ -14,8 +14,8 @@
 	if (defined('INSTALLED')) {
 
 		//includes.php
-		include_once('includes/includes.php');
-  		include_once('includes/functions.php');
+		include_once('../includes/includes.php');
+  		include_once('../includes/functions.php');
 
 	} else {
 
@@ -28,23 +28,20 @@
 	//Get a reference to the database
 	global $db;
 
-	//Here's the SQL statement to return character information
-	/*$strSQL = "
-		SELECT charname, zone_settings.name, mjob, sjob, mlvl, slvl, bazaar_message 
-		FROM chars, zone_settings, char_stats 
-		WHERE chars.charid in (select charid from accounts_sessions) and chars.pos_zone = zone_settings.zoneid and chars.charid = char_stats.charid
-	";*/
-
+	//Get parameters from datatables js
 	$search = $_GET['search'];
 	$orderColGet = $_GET['order'];
 	$orderColVal = $orderColGet[0]["column"] + 1;
 
+	//If the user sent a search string from datatables, let's put it into the sql where clause
 	if(!empty($search["value"])){
-		$searchWhere = " and (charname like '%".$search["value"]."%' or name like '%".$search["value"]."%')";
+		$searchWhere = " and (charname like :searchValue or replace(name, '_', ' ') like :searchValue)";
+
 	} else {
 		$searchWhere = '';
 	}
 
+	//Here's the SQL statement to return character information
 	$strSQL = '
 		SELECT charname , zone_settings.name, mjob, sjob, mlvl, slvl
 		FROM chars, zone_settings, char_stats
@@ -55,6 +52,7 @@
 
 	//Prepare the SQL statement
 	$statement = $db->prepare($strSQL);
+	$statement->bindValue(':searchValue', '%'.$search["value"].'%');
 
 	//If the statement doesn't work, show an error.  Otherwise, fetch it into an array
 	if (!$statement->execute()) {
@@ -67,28 +65,16 @@
 
 	$json = customJsonEncoder($arrReturn);
 	echo($json);
-
-	//This function is used to help the json encode work
-	function utf8ize($d) {
-	    if (is_array($d)) {
-	        foreach ($d as $k => $v) {
-	            $d[$k] = utf8ize($v);
-	        }
-	    } else if (is_string ($d)) {
-	        return utf8_encode($d);
-	    }
-	    return $d;
-	}
-
+	
 	function customJsonEncoder($arrReturn){
 
 		global $jobNames, $jobAbbreviations;
 
 		$json = '
 		{
-			"draw": '.$_GET['draw'].',
-			"recordsTotal": '.sizeOf($arrReturn).',
-			"recordsFiltered": '.sizeOf($arrReturn).',
+			"draw": '.(int)$_GET['draw'].',
+			"recordsTotal": '.onlineCount().',
+			"recordsFiltered": '.onlineCount().',
 			"data": [
 		';
 

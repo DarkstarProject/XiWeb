@@ -24,27 +24,29 @@
 
 		<p style="padding:10px;">
 		<div class="container">
-			<h2>There are '.number_format(onlineCount()).' characters online.</h2>
+			<h2>There are '.number_format(auctionHouseCount()).' items in the Auction House.</h2>
 			<p></p>
-			<table id="onlineCharacters" class="display" cellspacing="0" width="100%">
+			<table id="auctionHouse" class="display" cellspacing="0" width="100%">
 				<thead>
-					<th>Character Name</th>
-					<th>Area</th>
-					<th>Main Job</th>
-					<th>Sub Job</th>
-					<!--<th>Bazaar Message</th>-->
+					<th>Icon</th>
+					<th>Item Name</th>
+					<th>Type</th>
+					<th>Stack</th>
+					<th>Price</th>
+					<th>Link</th>
 				</thead>
 				<tfoot>
-					<th>Character Name</th>
-					<th>Area</th>
-					<th>Main Job</th>
-					<th>Sub Job</th>
-					<!--<th>Bazaar Message</th>-->
+					<th>Icon</th>
+					<th>Item Name</th>
+					<th>Type</th>
+					<th>Stack</th>
+					<th>Price</th>
+					<th>Link</th>
 				</tfoot>
 			</table>
 		</div>
 		<p style="padding:50px;">
-		<script type="text/javascript" src="themes/default/js/roster.js"></script>
+		<script type="text/javascript" src="themes/default/js/auctionHouse.js"></script>
 	';
 
 ?>
