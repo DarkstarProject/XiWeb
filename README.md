@@ -5,12 +5,12 @@ XIWeb is a front-end interface for the DarkStarProject FFXI server. When install
 use with your FFXI private server.
 
 Features
-..* See a list of who is online currently
-..* See what's for sale in the Auction House
+* See a list of who is online currently
+* See what's for sale in the Auction House
 
 Planned Features
-..* Users will be able to reset/recover their passwords
-..* Users will be able to view their characters outside of the game and view their inventory
+* Users will be able to reset/recover their passwords
+* Users will be able to view their characters outside of the game and view their inventory
 
 This project is still being developed, and any changes will be added to this file.
 
