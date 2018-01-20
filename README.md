@@ -11,6 +11,7 @@ Features
 Planned Features
 * Users will be able to reset/recover their passwords
 * Users will be able to view their characters outside of the game and view their inventory
+* Users will be able to plan events together using a community calendar
 
 This project is still being developed, and any changes will be added to this file.
 

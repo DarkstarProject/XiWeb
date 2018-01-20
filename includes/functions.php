@@ -11,8 +11,6 @@ function doLogin($username,$password) {
   $statement->bindValue(':username',$_POST['username']);
   $statement->bindValue(':password',$_POST['password']);
 
-  console_log($statement);
-
   if (!$statement->execute()) { 
     //watchdog($statement->errorInfo(),'SQL'); 
   }
@@ -110,6 +108,26 @@ function console_log( ...$messages ){
   echo '<script>';
   echo 'console.log('. json_encode($msgs) .')';
   echo '</script>';
+}
+
+//This function will update the email for an account
+function updateEmail($login, $email){
+
+  global $db;
+
+  $strSQL = "Update accounts set email = :newEmail where login = :login";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':newEmail', $email);
+  $statement->bindValue(':login', $login);
+
+  if (!$statement->execute()) {
+    return 0;
+  }
+  else {
+    return 1;
+  }
+
 }
 
 ?>

@@ -11,7 +11,7 @@ $(document).ready(function() {
 			null,
 			{"width": "10%"},
 			null,
-			null
+			{"orderable": false}
 		],
 		"order": [[ 1, "asc" ]]
     });

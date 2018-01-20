@@ -114,7 +114,9 @@
 		        		break;
 		        	}
 		        	case("type"):{
-						$value = $ahItemTypes[$value];
+		        		if(!empty($ahItemTypes[$value])){
+		        			$value = $ahItemTypes[$value];
+		        		}
 						$innerjson .= '"'.$value.'",';
 						break;
 					}

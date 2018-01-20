@@ -40,6 +40,10 @@ $lang['error']['create_character'] = array(
   'creation_error' => 'Unable to create character'
 );
 
+$lang['error']['account'] = array(
+  'email_fail' => 'There was an error setting your e-mail address.'
+);
+
 // General page errors
 $lang['error']['general'] = array(
   'error_message' => 'Please correct the following errors:',
@@ -72,4 +76,8 @@ $lang['text']['general'] = array(
 
 $lang['error']['character'] = array(
   'no_access' => 'You do not have access to view this character, or the owner has not made this profile public.'
+);
+
+$lang['messages']['account'] = array(
+  'email_success' => 'Your e-mail address has been changed.'
 );

@@ -22,7 +22,6 @@
         </div>
       </div>
 
-		<p style="padding:10px;">
 		<div class="container">
 			<h2>There are '.number_format(onlineCount()).' characters online.</h2>
 			<p></p>

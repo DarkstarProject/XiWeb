@@ -22,7 +22,6 @@
         </div>
       </div>
 
-		<p style="padding:10px;">
 		<div class="container">
 			<h2>There are '.number_format(auctionHouseCount()).' items in the Auction House.</h2>
 			<p></p>
