@@ -33,7 +33,7 @@
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i>  '.$_SESSION['auth']['username'].'</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 				<a class="dropdown-item" href="myAccount.php">My Account</a>
-				<a class="dropdown-item" href="#">My Characters</a>
+				<a class="dropdown-item" href="myCharacters.php">My Characters</a>
 				</div>
 			</li>
 		';

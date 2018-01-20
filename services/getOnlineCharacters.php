@@ -89,14 +89,14 @@
 		        		break;
 		        	}
 		        	case ("mjob"):{
-		        		$innerjson .= '"Level '.$arr["mlvl"].' '.$jobNames[$value].' ('.$jobAbbreviations[$value].')",';
+		        		$innerjson .= '"Level '.$arr["mlvl"].' '.$jobNames[$value].' ('.strtoupper($jobAbbreviations[$value]).')",';
 		        		break;
 		        	}
 		        	case ("sjob"):{
 		        		if($jobNames[$value] == ''){
 		        				$innerjson .= '"",';
 		        		} else {
-		        				$innerjson .= '"Level '.$arr["slvl"].' '.$jobNames[$value].' ('.$jobAbbreviations[$value].')",';
+		        				$innerjson .= '"Level '.$arr["slvl"].' '.$jobNames[$value].' ('.strtoupper($jobAbbreviations[$value]).')",';
 		        		}
 		        		break;
 		        	}

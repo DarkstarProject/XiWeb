@@ -130,4 +130,79 @@ function updateEmail($login, $email){
 
 }
 
+//This function will return the characters of the session user
+function getMyCharacters(){
+
+  global $db;
+
+  $strSQL = "
+    SELECT chars.charid, charname, nation, zs1.name as CurrentZone, zs2.name as HomeZone, playtime, cs.hp, cs.mp, cs.mjob, cs.sjob, cs.mlvl, cs.slvl, ce.war, ce.mnk, ce.whm, ce.blm, ce.rdm, ce.thf, ce.pld, ce.drk, ce.bst, ce.brd, ce.rng, ce.sam, ce.nin, ce.drg, ce.smn, ce.blu, ce.cor, ce.pup, ce.dnc, ce.sch, ce.geo, ce.run, cl.face, cl.race, cl.size
+    from chars
+    join zone_settings zs1 on chars.pos_zone = zs1.zoneid
+    join zone_settings zs2 on chars.home_zone = zs2.zoneid
+    join char_stats cs on chars.charid = cs.charid
+    join char_exp ce on chars.charid = ce.charid
+    join char_look cl on chars.charid = cl.charid
+    where accid = (select id from accounts where login = :accID)
+  ";
+  $statement = $db->prepare($strSQL);
+  $statement->bindValue(':accID',$_SESSION['auth']['username']);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    return $characters = $statement->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+}
+
+//This function will format the look of a character's playtime
+function formatPlayTime($seconds){
+
+  $zero    = new DateTime('@0');
+  $offset  = new DateTime('@' . $seconds * 6);
+  $diff    = $zero->diff($offset);
+  return $diff->format('%a Days, %h Hours, %i Minutes');
+
+}
+
+//This function will get a characters gender basedon its race value
+function getCharacterGender($race) {
+
+  if ($race == '2' || $race == '4' || $race == '6' || $race == '7') {
+    return 'Female';
+  }
+  else {
+    return 'Male';
+  }
+
+}
+
+//This function will return all of the skill values for the given character id
+function getCharacterSkills($charid){
+
+  global $db;
+
+  $strSQL = '
+    select char_skills.skillid, sr.name as skillname, value
+    from char_skills
+    join skill_ranks sr on char_skills.skillid = sr.skillid
+    where char_skills.charid = :charID
+    order by 2
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID', $charid);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn;
+  }
+
+}
+
 ?>

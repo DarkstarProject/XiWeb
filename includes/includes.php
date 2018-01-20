@@ -88,28 +88,28 @@ $jobNames = array(
 // Jobs
 $jobAbbreviations = array(
   0 => '',     // None
-  1 => 'WAR',  // Warrior
-  2 => 'MNK',  // Monk
-  3 => 'WHM',  // White Mage
-  4 => 'BLM',  // Black Mage
-  5 => 'RDM',  // Red mage
-  6 => 'THF',  // Thief
-  7 => 'PLD',  // Paladin
-  8 => 'DRK',  // Dark Knight
-  9 => 'BST',  // Beastmaster
-  10 => 'BRD', // Bard
-  11 => 'RNG', // Ranger
-  12 => 'SAM', // Samurai
-  13 => 'NIN', // Ninja
-  14 => 'DRG', // Dragoon
-  15 => 'SMN', // Summoner
-  16 => 'BLU', // Blue Mage
-  17 => 'COR', // Corsair
-  18 => 'PUP', // Puppetmaster
-  19 => 'DNC', // Dancer
-  20 => 'SCH', // Scholar
-  21 => 'GEO', // Geomancer
-  22 => 'RUN', // Rune fencer
+  1 => 'war',  // Warrior
+  2 => 'mnk',  // Monk
+  3 => 'whm',  // White Mage
+  4 => 'blm',  // Black Mage
+  5 => 'rdm',  // Red mage
+  6 => 'thf',  // Thief
+  7 => 'pld',  // Paladin
+  8 => 'drk',  // Dark Knight
+  9 => 'bst',  // Beastmaster
+  10 => 'brd', // Bard
+  11 => 'rng', // Ranger
+  12 => 'sam', // Samurai
+  13 => 'nin', // Ninja
+  14 => 'drg', // Dragoon
+  15 => 'smn', // Summoner
+  16 => 'blu', // Blue Mage
+  17 => 'cor', // Corsair
+  18 => 'pup', // Puppetmaster
+  19 => 'dnc', // Dancer
+  20 => 'sch', // Scholar
+  21 => 'geo', // Geomancer
+  22 => 'run', // Rune fencer
 );
 
 // Equipment slot IDs
@@ -936,6 +936,94 @@ $ahItemTypes = array(
 	60 => 'Dice',
 	61 => 'Automation',
 	62 => 'Grips',
+);
+
+$nations = array(
+	0 => 'San d\'Oria',
+	1 => 'Bastok',
+	2 => 'Windurst'
+);
+
+$faces = array(
+  0 => '1a',
+  1 => '1b',
+  2 => '2a',
+  3 => '2b',
+  4 => '3a',
+  5 => '3b',
+  6 => '4a',
+  7 => '4b',
+  8 => '5a',
+  9 => '5b',
+  10 => '6a',
+  11 => '6b',
+  12 => '7a',
+  13 => '7b',
+  14 => '8a',
+  15 => '8b'
+);
+
+$races = array(
+  1 => 'Hume',
+  2 => 'Hume',
+  3 => 'Elvaan',
+  4 => 'Elvaan',
+  5 => 'Tarutaru',
+  6 => 'Tarutaru',
+  7 => 'Mithra',
+  8 => 'Galka'
+);
+
+// Character skill IDs (Combat, Ranged, Magic and Crafting)
+$skill_ids = array(
+  'non' => 2,
+  'h2h' => 1,
+  'dag' => 2,
+  'swd' => 3,
+  'gsd' => 4,
+  'axe' => 5,
+  'gax' => 6,
+  'syh' => 7,
+  'pol' => 8,
+  'kat' => 9,
+  'gkt' => 10,
+  'clb' => 11,
+  'stf' => 12,
+  'ame' => 22,
+  'ara' => 23,
+  'ama' => 24,
+  'arc' => 25,
+  'mrk' => 26,
+  'thr' => 27,
+  'grd' => 28,
+  'eva' => 29,
+  'shl' => 30,
+  'par' => 31,
+  'div' => 32,
+  'hea' => 33,
+  'enh' => 34,
+  'enf' => 35,
+  'ele' => 36,
+  'drk' => 37,
+  'sum' => 38,
+  'nin' => 39,
+  'sng' => 40,
+  'str' => 41,
+  'wnd' => 42,
+  'blu' => 43,
+  'geo' => 44,
+  'hnd' => 45,
+  'fsh' => 48,
+  'wdw' => 49,
+  'smt' => 50,
+  'gld' => 51,
+  'clt' => 52,
+  'lth' => 53,
+  'bon' => 54,
+  'alc' => 55,
+  'cok' => 56,
+  'syn' => 57,
+  'rid' => 58,
 );
 
 ?>

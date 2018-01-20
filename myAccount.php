@@ -18,22 +18,21 @@
 		include_once('includes/includes.php');
   		include_once('includes/functions.php');
 
+  		unset($_SESSION['messages']);
+		unset($_SESSION['errors']);
+
   		//If the user is trying to update, let's give it a go
   		if (!empty($_POST['update'])) {
 
   			// We need to check if the credentials supplied match. If not, let the user know.
 	    	if (!doLogin($_SESSION['auth']['username'],$_POST['password'])) {
-	    		$_SESSION['messages']['account'] = '';
 	    		$_SESSION['errors']['account'] = '';
 		        $_SESSION['errors']['account'][] = $lang['error']['auth']['invalid_login']; 
 	    	} else {
 
 	    		if(updateEmail($_SESSION['auth']['username'], $_POST['email']) == 0){
-	    			$_SESSION['messages']['account'] = '';
-	    			$_SESSION['errors']['account'] = '';
 	    			$_SESSION['errors']['account'][] = $lang['error']['account']['email_fail']; 
 	    		} else {
-	    			$_SESSION['messages']['account'] = '';
 	    			$_SESSION['messages']['account'][] = $lang['messages']['account']['email_success'];
 	    		}
 
