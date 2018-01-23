@@ -136,13 +136,19 @@ function getMyCharacters(){
   global $db;
 
   $strSQL = "
-    SELECT chars.charid, charname, nation, zs1.name as CurrentZone, zs2.name as HomeZone, playtime, cs.hp, cs.mp, cs.mjob, cs.sjob, cs.mlvl, cs.slvl, ce.war, ce.mnk, ce.whm, ce.blm, ce.rdm, ce.thf, ce.pld, ce.drk, ce.bst, ce.brd, ce.rng, ce.sam, ce.nin, ce.drg, ce.smn, ce.blu, ce.cor, ce.pup, ce.dnc, ce.sch, ce.geo, ce.run, cl.face, cl.race, cl.size
+    SELECT chars.charid, charname, nation, zs1.name as CurrentZone, zs2.name as HomeZone, playtime, 
+    cs.hp, cs.mp, cs.mjob, cs.sjob, cs.mlvl, cs.slvl, 
+    ce.war, ce.mnk, ce.whm, ce.blm, ce.rdm, ce.thf, ce.pld, ce.drk, ce.bst, ce.brd, ce.rng, ce.sam, ce.nin, ce.drg, ce.smn, ce.blu, ce.cor, ce.pup, ce.dnc, ce.sch, ce.geo, ce.run, 
+    cl.face, cl.race, cl.size, 
+    cj.war as warlvl, cj.mnk as mnklvl, cj.whm as whmlvl, cj.blm as blmlvl, cj.rdm as rdmlvl, cj.thf as thflvl, cj.pld as pldlvl, cj.drk as drklvl, cj.bst as bstlvl, cj.brd as brdlvl, cj.rng as rnglvl, 
+    cj.sam as samlvl, cj.nin as ninlvl, cj.drg as drglvl, cj.smn as smnlvl, cj.blu as blulvl, cj.cor as corlvl, cj.pup as puplvl, cj.dnc as dnclvl, cj.sch as schlvl, cj.geo as geolvl, cj.run as runlvl
     from chars
     join zone_settings zs1 on chars.pos_zone = zs1.zoneid
     join zone_settings zs2 on chars.home_zone = zs2.zoneid
     join char_stats cs on chars.charid = cs.charid
     join char_exp ce on chars.charid = ce.charid
     join char_look cl on chars.charid = cl.charid
+    join char_jobs cj on chars.charid = cj.charid
     where accid = (select id from accounts where login = :accID)
   ";
   $statement = $db->prepare($strSQL);
@@ -201,6 +207,138 @@ function getCharacterSkills($charid){
   else {
     $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $arrReturn;
+  }
+
+}
+
+//This function will return all of the spells a character knows
+function getCharacterSpells($charid){
+
+  global $db;
+
+  $strSQL = '
+    SELECT name 
+    FROM `char_spells` 
+    JOIN spell_list on char_spells.spellid = spell_list.spellid
+    WHERE charid = :charID
+    ORDER BY 1
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID', $charid);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn;
+  }
+
+}
+
+//This function will capitalize roman numerals (in the spell names)
+function ucromans($string){
+
+  $string = str_replace(" i", " I", $string);
+  $string = str_replace(" ii", " II", $string);
+  $string = str_replace(" iii", " III", $string);
+  $string = str_replace(" iv", " IV", $string);
+  $string = str_replace(" v", " V", $string);
+  $string = str_replace(" vi", " VI", $string);
+
+  return $string;
+
+}
+
+//This function will return the character's currently equipped items
+function getCharacterEquipment($charid){
+
+  global $db;
+
+  $strSQL = '
+    SELECT slotid, equipslotid, char_inventory.itemid, name
+    FROM `char_equip`, char_inventory, item_basic
+    WHERE char_equip.charid = char_inventory.charid and char_equip.slotid = char_inventory.slot and 
+    char_equip.containerid = char_inventory.location and char_inventory.itemid = item_basic.itemid and char_equip.charid = :charID
+    ORDER BY equipslotid
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charID', $charid);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn;
+  }
+
+}
+
+//This function will return an html image tag with an equipment icon based on the slot
+function getEquipmentSlotIMG($characterEquipment, $slotstring){
+
+  global $equipment_ids;
+
+  $slotnum = $equipment_ids[$slotstring];
+
+  foreach($characterEquipment as $equipment){
+    if($equipment['equipslotid'] == $slotnum){
+      return '<img src="http://static.ffxiah.com/images/icon/'.$equipment['itemid'].'.png" style="background: url(\'http://static.ffxiah.com/images/eq'.($slotnum+1).'.gif\');" class="tooltipster" title="'.ucwords(str_replace("_", " ", $equipment['name'])).'" alt="'.ucwords(str_replace("_", " ", $equipment['name'])).'"/>';
+    }
+  }
+
+  return '<img src="http://static.ffxiah.com/images/eq'.($slotnum+1).'.gif"/>';
+
+}
+
+//This function will return how much gil a character has
+function getCharacterGil($charid){
+
+  global $db;
+
+  $strSQL = '
+    SELECT char_inventory.itemid, name, quantity, location
+    FROM `char_inventory`
+    JOIN item_basic on char_inventory.itemId = item_basic.itemid
+    WHERE charid = :charid and name = \'gil\'
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charid', $charid);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn[0]['quantity'];
+  }
+
+}
+
+//This function will return all of the currencies for a character
+function getCharacterCurrencies($charid){
+
+  global $db;
+
+  $strSQL = '
+    SELECT *
+    FROM `char_points`
+    WHERE charid = :charid
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':charid', $charid);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn[0];
   }
 
 }

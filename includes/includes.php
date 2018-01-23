@@ -1026,4 +1026,40 @@ $skill_ids = array(
   'rid' => 58,
 );
 
+// Equipment slot IDs
+$equipment_ids = array(
+  'SLOT_MAIN'	=> 0,
+	'SLOT_SUB'	=> 1,
+	'SLOT_RANGED'	=> 2,
+	'SLOT_AMMO'	=> 3,
+	'SLOT_HEAD'	=> 4,
+	'SLOT_BODY'	=> 5,
+	'SLOT_HANDS'	=> 6,
+	'SLOT_LEGS'	=> 7,
+	'SLOT_FEET'	=> 8,
+	'SLOT_NECK'	=> 9,
+	'SLOT_WAIST'	=> 10,
+	'SLOT_EAR1'	=> 11,
+	'SLOT_EAR2'	=> 12,
+	'SLOT_RING1'	=> 13,
+	'SLOT_RING2' => 14,
+	'SLOT_BACK'	=> 15,
+);
+
+$inventoryLocations = array(
+	0 => 'Inventory',
+	1 => 'Mog Safe 1',
+	2 => 'Mog Safe 2',
+	3 => 'Storage',
+	4 => 'Mog Locker',
+	5 => 'Mog Satchel',
+	6 => 'Mog Sack',
+	7 => 'Mog Case',
+	8 => 'Mog Wardrobe',
+	9 => 'Mog Wardrobe 2',
+	10 => 'Mog Wardrobe 3',
+	11 => 'Mog Wardrobe 4',
+	12 => 'Delivery Box'
+);
+
 ?>

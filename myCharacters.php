@@ -35,6 +35,9 @@
 	}
 
 	$selectedCharacterSkills = getCharacterSkills($selectedCharacter['charid']);
+	$selectedCharacterSpells = getCharacterSpells($selectedCharacter['charid']);
+	$selectedCharacterEquipment = getCharacterEquipment($selectedCharacter['charid']);
+	$selectedCharacterCurrencies = getCharacterCurrencies($selectedCharacter['charid']);
 
 	global $jobAbbreviations, $jobNames, $nations, $faces, $races;
 
