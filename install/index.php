@@ -128,6 +128,9 @@
 	//This tells the site that installation is complete
 	define(\'INSTALLED\',TRUE);
 
+	//This variable will be detected for future updates
+	$configVersion = \'1.0\';
+
 	//This indicates which theme to use
 	$theme = \'default\';
 
@@ -148,6 +151,24 @@
 	//These display text on the page
 	$frontpage_title = \'XIWeb Installation\';
 	$frontpage_message = \'This is the default front-page message for your XIWeb installation. To change this, please check the configuration file.\';
+
+	//These variables are for displaying the news items on the main page (will be changed to use a database in future versions)
+	//Set a newsTitle to an empty string to hide that news item
+	$newsTitle1 = \'News Title 1\';
+	$newsSummary1 = \'News Description 1: <b>HTML</b> is <i>allowed</i>\';
+	$newsDetails1 = \'
+		News Details 1
+	\';
+	$newsTitle2 = \'News Title 2\';
+	$newsSummary2 = \'News Description 2: <b>HTML</b> is <i>allowed</i>\';
+	$newsDetails2 = \'
+		News Details 2
+	\';
+	$newsTitle3 = \'News Title 3\';
+	$newsSummary3 = \'News Description 3: <b>HTML</b> is <i>allowed</i>\';
+	$newsDetails3 = \'
+		News Details 3
+	\';
 
 ?>				
 			';

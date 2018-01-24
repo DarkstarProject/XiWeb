@@ -139,6 +139,7 @@
 		        }
 		    }
 		    $innerjson .= '"<a target=\'_blank\' href=\'http://ffxiclopedia.wikia.com/wiki/'.htmlentities(ucwords($arr["name"], " _-")).'\'>FFXIClopedia</a>",';
+		    $innerjson .= '"<a target=\'_blank\' href=\'http://ffxiah.com/item/'.$arr["itemId"].'\'>FFXIAH</a>",';
 		    $json .= chop($innerjson, ',').'],';
 		}
 

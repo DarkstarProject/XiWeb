@@ -21,6 +21,8 @@
 				<link rel="stylesheet" type="text/css" href="themes/default/css/jquery.dataTables.min.css"/>
 				<link rel="stylesheet" type="text/css" href="themes/default/css/styles.css"/>
 				
+				<script src=\'https://www.google.com/recaptcha/api.js\'></script>
+
 			</head>
 	';
 

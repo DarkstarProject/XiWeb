@@ -31,13 +31,17 @@
 	if(!empty($_GET['index'])){
 		$selectedCharacter = $myCharacters[$_GET['index']];
 	} else {
-		$selectedCharacter = $myCharacters[0];
+		if(!empty($myCharacters)){
+			$selectedCharacter = $myCharacters[0];
+		}
 	}
 
-	$selectedCharacterSkills = getCharacterSkills($selectedCharacter['charid']);
-	$selectedCharacterSpells = getCharacterSpells($selectedCharacter['charid']);
-	$selectedCharacterEquipment = getCharacterEquipment($selectedCharacter['charid']);
-	$selectedCharacterCurrencies = getCharacterCurrencies($selectedCharacter['charid']);
+	if(!empty($myCharacters)){
+		$selectedCharacterSkills = getCharacterSkills($selectedCharacter['charid']);
+		$selectedCharacterSpells = getCharacterSpells($selectedCharacter['charid']);
+		$selectedCharacterEquipment = getCharacterEquipment($selectedCharacter['charid']);
+		$selectedCharacterCurrencies = getCharacterCurrencies($selectedCharacter['charid']);
+	}
 
 	global $jobAbbreviations, $jobNames, $nations, $faces, $races;
 

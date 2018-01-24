@@ -32,7 +32,8 @@
 					<th>Type</th>
 					<th>Stack</th>
 					<th>Price</th>
-					<th>Link</th>
+					<th></th>
+					<th></th>
 				</thead>
 				<tfoot>
 					<th>Icon</th>
@@ -40,7 +41,8 @@
 					<th>Type</th>
 					<th>Stack</th>
 					<th>Price</th>
-					<th>Link</th>
+					<th></th>
+					<th></th>
 				</tfoot>
 			</table>
 		</div>

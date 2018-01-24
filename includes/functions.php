@@ -40,11 +40,11 @@ function serverstatus() {
   
   $socket = (@fsockopen($server_address,54230, $errNo, $errString, 1.0));
 
-  if($errNo >= 1){
+  if($errNo >= 1 || !$socket){
     $status = 0;
   } else {
     $status = 1;
-    fclose($socket);
+    //fclose($socket);
   } 
 
   return $status;
@@ -115,7 +115,7 @@ function updateEmail($login, $email){
 
   global $db;
 
-  $strSQL = "Update accounts set email = :newEmail where login = :login";
+  $strSQL = "Update accounts set email = :newEmail and timelastmodify = NOW() where login = :login";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':newEmail', $email);
@@ -167,7 +167,7 @@ function getMyCharacters(){
 function formatPlayTime($seconds){
 
   $zero    = new DateTime('@0');
-  $offset  = new DateTime('@' . $seconds * 6);
+  $offset  = new DateTime('@' . $seconds);
   $diff    = $zero->diff($offset);
   return $diff->format('%a Days, %h Hours, %i Minutes');
 
@@ -341,6 +341,74 @@ function getCharacterCurrencies($charid){
     return $arrReturn[0];
   }
 
+}
+
+//This function will create an account
+function createAccount($account,$password,$email) {
+  global $db;
+  
+  $id = getMaxAccountID() + 1;
+  
+  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`email`, timecreate, timelastmodify) VALUES(:id,:login,PASSWORD('$password'),:email, NOW(), NOW())";
+  $statement = $db->prepare($strSQL);
+  $statement->bindValue(':id',$id);
+  $statement->bindValue(':login',$account);
+  $statement->bindValue(':email',$email);
+  
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+    var_dump($statement->errorInfo());
+  }
+  else {
+    return TRUE;
+  }
+}
+
+//This function will return an id for an account if it exists
+function getAccountID($account) {
+  global $db;
+
+  $strSQL = "SELECT id FROM accounts WHERE login = :username OR email = :username";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':username',$account);
+
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll();
+  }
+
+  if (!empty($arrReturn)) {
+    return $arrReturn[0]['id'];
+  }
+  else {
+    return 0;
+  }
+
+}
+
+//This function will be used in the insert account function for the ID
+function getMaxAccountID() {
+  global $db;
+  
+  $strSQL = "SELECT max(id) AS maxid FROM accounts";
+  $statement = $db->prepare($strSQL);
+  
+  if (!$statement->execute()) {
+    watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+    if (!empty($arrReturn)) {
+      return $arrReturn[0]['maxid'];
+    }
+    else {
+      return 999;
+    }
+  }
 }
 
 ?>

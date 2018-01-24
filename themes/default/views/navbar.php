@@ -47,6 +47,7 @@
 
 		$output .= '
 				        <a class="nav-link" href="login.php">Login<span class="sr-only">(current)</span></a>
+				        <a class="nav-link" href="register.php"><i>Register</i></a>
 				        </ul>
 				      </div>
 				    </nav>

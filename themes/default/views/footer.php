@@ -12,6 +12,7 @@
 				<footer class="footer">
 			      <div class="container">
 			        <span class="text-muted">FFXI Server Status: '.$serverStat.'</span>
+			        <span class="text-muted small"> <i>'.(serverStatus() == 1 ? onlineCount()." Users Online" : "").'</i></span>
 			      </div>
 			    </footer>
 			</body>

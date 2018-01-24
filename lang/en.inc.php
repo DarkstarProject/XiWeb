@@ -81,3 +81,15 @@ $lang['error']['character'] = array(
 $lang['messages']['account'] = array(
   'email_success' => 'Your e-mail address has been changed.'
 );
+
+$lang['error']['registration'] = array(
+  'user_exists' => 'That user name is already taken.  Please choose another.',
+  'user_empty' => 'Please enter a username.',
+  'password_empty' => 'Please enter a password.',
+  'password_match' => 'The passwords do not match.',
+  'general_error' => 'There was an error creating your account.'
+);
+
+$lang['message']['registration'] = array(
+  'account_created' => 'Your account has been created!'
+);
