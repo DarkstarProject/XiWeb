@@ -51,7 +51,9 @@ function serverstatus() {
 }
 
 //Get the count of online sessions currently on the server
-function onlineCount() {
+function onlineCount(){
+
+  //Get a reference to the database
   global $db;
 
   $strSQL = "SELECT COUNT(*) FROM `accounts_sessions`";
@@ -66,11 +68,11 @@ function onlineCount() {
 
   if (!empty($arrReturn)) {
     return $arrReturn[0]['COUNT(*)'];
-
   }
   else {
     return '0';
   }
+  
 }
 
 //Get the count of items for sale in the auction house currently
@@ -409,6 +411,24 @@ function getMaxAccountID() {
       return 999;
     }
   }
+}
+
+//This function gets the IP address from a remote call (used in reCAPTCHA)
+function getRealIPAddr()
+{
+    if (!empty($_SERVER['HTTP_CLIENT_IP']))   //check ip from share internet
+    {
+      $ip=$_SERVER['HTTP_CLIENT_IP'];
+    }
+    elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))   //to check ip is pass from proxy
+    {
+      $ip=$_SERVER['HTTP_X_FORWARDED_FOR'];
+    }
+    else
+    {
+      $ip=$_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
 }
 
 ?>

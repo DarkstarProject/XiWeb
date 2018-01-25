@@ -110,6 +110,26 @@
 		      $serverAddress = $_POST['serverAddress'];
 		    }
 
+		    //Allow users to register
+		    if (!empty($_POST['newAccountRegistration'])) {		      
+		      $newAccountRegistration = $_POST['newAccountRegistration'];
+		    }
+
+		    //Use reCAPTCHA
+		    if (!empty($_POST['useRecaptcha'])) {		      
+		      $useRecaptcha = $_POST['useRecaptcha'];
+		    }
+
+		    //reCAPTCHA Site Key
+		    if (!empty($_POST['recaptchaSiteKey'])) {		      
+		      $recaptchaSiteKey = $_POST['recaptchaSiteKey'];
+		    }
+
+		    //reCAPTCHA Secret Key
+		    if (!empty($_POST['recaptchaSecretKey'])) {		      
+		      $recaptchaSecretKey = $_POST['recaptchaSecretKey'];
+		    }
+
 		} else {
 
 			//Looks like we got enough information to create the config.php file.  Let's do it!
@@ -120,6 +140,10 @@
 			$databaseName = $_POST['databaseName'];
 			$serverName = $_POST['serverName'];
 			$serverAddress = $_POST['serverAddress'];
+			$newAccountRegistration = ($_POST['newAccountRegistration'] == 'on' ? TRUE : FALSE);
+			$useRecaptcha = ($_POST['useRecaptcha'] == 'on' ? TRUE : FALSE);
+			$recaptchaSiteKey = $_POST['recaptchaSiteKey'];
+		    $recaptchaSecretKey = $_POST['recaptchaSecretKey'];
 
 			//Contents of the config.php file
 			$write_contents = '
@@ -169,6 +193,11 @@
 	$newsDetails3 = \'
 		News Details 3
 	\';
+
+	$allowAccountRegistration = '.($newAccountRegistration ? 'TRUE' : 'FALSE').';
+	$useRecaptcha = '.($useRecaptcha ? 'TRUE' : 'FALSE').';
+	$recaptchaSiteKey = \''.$recaptchaSiteKey.'\';
+	$recaptchaSecretKey = \''.$recaptchaSecretKey.'\';
 
 ?>				
 			';

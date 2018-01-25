@@ -305,6 +305,51 @@
 											<tr><td>Guild Points (Bonecraft)</td><td>'.$selectedCharacterCurrencies['guild_bonecraft'].'</td></tr>
 											<tr><td>Guild Points (Alchemy)</td><td>'.$selectedCharacterCurrencies['guild_alchemy'].'</td></tr>
 											<tr><td>Guild Points (Cooking)</td><td>'.$selectedCharacterCurrencies['guild_cooking'].'</td></tr>
+											<tr><td>Cinders</td><td>'.$selectedCharacterCurrencies['cinder'].'</td></tr>
+											<tr><td>Synergy Fewell (Fire)</td><td>'.$selectedCharacterCurrencies['fire_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Ice)</td><td>'.$selectedCharacterCurrencies['ice_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Wind)</td><td>'.$selectedCharacterCurrencies['wind_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Earth)</td><td>'.$selectedCharacterCurrencies['earth_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Lightning)</td><td>'.$selectedCharacterCurrencies['lightning_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Water)</td><td>'.$selectedCharacterCurrencies['water_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Light)</td><td>'.$selectedCharacterCurrencies['light_fewell'].'</td></tr>
+											<tr><td>Synergy Fewell (Dark)</td><td>'.$selectedCharacterCurrencies['dark_fewell'].'</td></tr>
+											<tr><td>Ballista Points</td><td>'.$selectedCharacterCurrencies['ballista_point'].'</td></tr>
+											<tr><td>Fellow Points</td><td>'.$selectedCharacterCurrencies['fellow_point'].'</td></tr>
+											<tr><td>Chocobucks (San d\'Oria Team)</td><td>'.$selectedCharacterCurrencies['chocobuck_sandoria'].'</td></tr>
+											<tr><td>Chocobucks (Bastok Team)</td><td>'.$selectedCharacterCurrencies['chocobuck_bastok'].'</td></tr>
+											<tr><td>Chocobucks (Windurst Team)</td><td>'.$selectedCharacterCurrencies['chocobuck_windurst'].'</td></tr>
+											<tr><td>Research Marks</td><td>'.$selectedCharacterCurrencies['research_mark'].'</td></tr>
+											<tr><td>Wizened Tunnel Worms</td><td>'.$selectedCharacterCurrencies['tunnel_worm'].'</td></tr>
+											<tr><td>Wizened Morion Worms</td><td>'.$selectedCharacterCurrencies['morion_worm'].'</td></tr>
+											<tr><td>Wizened Phantom Worms</td><td>'.$selectedCharacterCurrencies['phantom_worm'].'</td></tr>
+											<tr><td>Moblin Marbles</td><td>'.$selectedCharacterCurrencies['moblin_marble'].'</td></tr>
+											<tr><td>Infamy</td><td>'.$selectedCharacterCurrencies['infamy'].'</td></tr>
+											<tr><td>Prestige</td><td>'.$selectedCharacterCurrencies['prestige'].'</td></tr>
+											<tr><td>Legion Points</td><td>'.$selectedCharacterCurrencies['legion_point'].'</td></tr>
+											<tr><td>Sparks of Eminence</td><td>'.$selectedCharacterCurrencies['spark_of_eminence'].'</td></tr>
+											<tr><td>Shining Stars</td><td>'.$selectedCharacterCurrencies['shining_star'].'</td></tr>
+											<tr><td>Imperial Standing</td><td>'.$selectedCharacterCurrencies['imperial_standing'].'</td></tr>
+											<tr><td>Assault Points (L. Sanctum)</td><td>'.$selectedCharacterCurrencies['leujaoam_assault_point'].'</td></tr>
+											<tr><td>Assault Points (M.J.T.G.)</td><td>'.$selectedCharacterCurrencies['mamool_assault_point'].'</td></tr>
+											<tr><td>Assault Points (L. Cavern)</td><td>'.$selectedCharacterCurrencies['lebros_assault_point'].'</td></tr>
+											<tr><td>Assault Points (Periqia)</td><td>'.$selectedCharacterCurrencies['periqia_assault_point'].'</td></tr>
+											<tr><td>Assault Points (Ilrusi Atoll)</td><td>'.$selectedCharacterCurrencies['ilrusi_assault_point'].'</td></tr>
+											<tr><td>Zeni</td><td>'.$selectedCharacterCurrencies['zeni_point'].'</td></tr>
+											<tr><td>Jettons</td><td>'.$selectedCharacterCurrencies['jetton'].'</td></tr>
+											<tr><td>Therion Ichor</td><td>'.$selectedCharacterCurrencies['therion_ichor'].'</td></tr>
+											<tr><td>Allied Notes</td><td>'.$selectedCharacterCurrencies['allied_notes'].'</td></tr>
+											<tr><td>Cruor</td><td>'.$selectedCharacterCurrencies['cruor'].'</td></tr>
+											<tr><td>Resistance Credits</td><td>'.$selectedCharacterCurrencies['resistance_credit'].'</td></tr>
+											<tr><td>Dominion Notes</td><td>'.$selectedCharacterCurrencies['dominion_note'].'</td></tr>
+											<tr><td>5th Echelon Battle Trophies</td><td>'.$selectedCharacterCurrencies['fifth_echelon_trophy'].'</td></tr>
+											<tr><td>4th Echelon Battle Trophies</td><td>'.$selectedCharacterCurrencies['fourth_echelon_trophy'].'</td></tr>
+											<tr><td>3rd Echelon Battle Trophies</td><td>'.$selectedCharacterCurrencies['third_echelon_trophy'].'</td></tr>
+											<tr><td>2nd Echelon Battle Trophies</td><td>'.$selectedCharacterCurrencies['second_echelon_trophy'].'</td></tr>
+											<tr><td>1st Echelon Battle Trophies</td><td>'.$selectedCharacterCurrencies['first_echelon_trophy'].'</td></tr>
+											<tr><td>Traverser Stones</td><td>'.$selectedCharacterCurrencies['traverser_stones'].'</td></tr>
+											<tr><td>Voidstones</td><td>'.$selectedCharacterCurrencies['voidstones'].'</td></tr>
+											<tr><td>Kupofried\'s Corundums</td><td>'.$selectedCharacterCurrencies['kupofried_corundums'].'</td></tr>
 										</tbody>
 									</table>
 								</div>

@@ -60,7 +60,7 @@
 							<input type="email" class="form-control" name="email" value="'.$email.'" placeholder="" required>
 						</div>
 						<div class="form-group">
-							<!--<div class="g-recaptcha" data-sitekey="6LcwLkIUAAAAAHqDgYX_XhCNGj1GIIr5u_ukLA5i"></div>-->
+							'.($useRecaptcha ? '<div class="g-recaptcha" data-sitekey="'.$recaptchaSiteKey.'"></div>' : '' ).'
 						</div>
 						<input type="hidden" name="register" value="1" />
 						<button type="submit" class="btn btn-primary">Register Account</button>

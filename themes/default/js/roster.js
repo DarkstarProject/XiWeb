@@ -4,12 +4,26 @@ $(document).ready(function() {
     var rosterTable = $('#onlineCharacters').DataTable({
     	"processing": true,
         "serverSide": true,
-        "ajax": "services/getOnlineCharacters.php"
+        "ajax": "services/getOnlineCharacters.php",
+        columns: [
+            null,
+            null,
+            {"type": "num"},
+            null
+        ],
+        "processing": false
     });
 
-    //Every 5 seconds, refresh the table
+    $.get("services/getOnlineCount.php", function(data){
+        $("#onlineH2").text("There are " + $.trim(data) + " characters online.");
+    });
+
+    //Every 10 seconds, refresh the table
     setInterval( function () {
-    	//rosterTable.ajax.reload();
-	}, 500 );
+        $.get("services/getOnlineCount.php", function(data){
+            $("#onlineH2").text("There are " + $.trim(data) + " characters online.");
+        });
+    	rosterTable.ajax.reload(null, false);
+	}, 10000 );
 
 } );

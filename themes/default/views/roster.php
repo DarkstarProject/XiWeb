@@ -23,22 +23,20 @@
       </div>
 
 		<div class="container">
-			<h2>There are '.number_format(onlineCount()).' characters online.</h2>
+			<h2 id="onlineH2">There are 0 characters online.</h2>
 			<p></p>
 			<table id="onlineCharacters" class="display" cellspacing="0" width="100%">
 				<thead>
 					<th>Character Name</th>
 					<th>Area</th>
-					<th>Main Job</th>
-					<th>Sub Job</th>
-					<!--<th>Bazaar Message</th>-->
+					<th>Job</th>
+					<th>Bazaar Message</th>
 				</thead>
 				<tfoot>
 					<th>Character Name</th>
 					<th>Area</th>
-					<th>Main Job</th>
-					<th>Sub Job</th>
-					<!--<th>Bazaar Message</th>-->
+					<th>Job</th>
+					<th>Bazaar Message</th>
 				</tfoot>
 			</table>
 		</div>

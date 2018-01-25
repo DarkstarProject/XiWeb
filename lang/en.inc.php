@@ -87,8 +87,10 @@ $lang['error']['registration'] = array(
   'user_empty' => 'Please enter a username.',
   'password_empty' => 'Please enter a password.',
   'password_match' => 'The passwords do not match.',
-  'general_error' => 'There was an error creating your account.'
-);
+  'general_error' => 'There was an error creating your account.',
+  'not_allowed' => 'New account registration is not allowed in this XIWeb application by the administrator.',
+  'reCAPTCHA' => 'There was an error with the reCAPTCHA.'
+); 
 
 $lang['message']['registration'] = array(
   'account_created' => 'Your account has been created!'

@@ -23,7 +23,7 @@
       </div>
 
 		<div class="container">
-			<h2>There are '.number_format(auctionHouseCount()).' items in the Auction House.</h2>
+			<h2 id="auctionH2">There are 0 items in the Auction House.</h2>
 			<p></p>
 			<table id="auctionHouse" class="display" cellspacing="0" width="100%">
 				<thead>

@@ -61,6 +61,26 @@
 							<input type="text" class="form-control" name="serverAddress" '.(!empty($serverAddress) ? 'value='.$serverAddress.'' : '').' aria-describedby="serverAddressHelp" placeholder="e.g. localhost">
 							<small id="serverAddressHelp" class="form-text text-muted">This is the address of the FFXI server to check it\'s status. (Probably on the same server as the database.)</small>
 						</div>
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input" name="newAccountRegistration" '.(!empty($newAccountRegistration) ? 'value='.$newAccountRegistration.'' : '').' aria-describedby="newAccountRegistrationHelp" checked>
+							<label class="form-check-label" for="nameAccountRegistration"> Allow New Account Registration</label>
+							<small id="newAccountRegistrationHelp" class="form-text text-muted">If this is checked, users will see a Register link and will be able to create game accounts on your FFXI Server.</small>
+						</div>
+						<div class="form-check">
+							<input type="checkbox" class="form-check-input" name="useRecaptcha" '.(!empty($useRecaptcha) ? 'value='.$useRecaptcha.'' : '').' aria-describedby="useRecaptchaHelp" checked>
+							<label class="form-check-label" for="useRecaptcha"> Use reCAPTCHA</label>
+							<small id="useRecaptchaHelp" class="form-text text-muted">Use this to prevent spam and bots from registering and logging into your site.</small>
+						</div>
+						<div class="form-group" style="padding-top:10px">
+							<label for="">reCAPTCHA Site Key</label>
+							<input type="text" class="form-control" name="recaptchaSiteKey" '.(!empty($recaptchaSiteKey) ? 'value='.$recaptchaSiteKey.'' : '').' aria-describedby="recaptchaSiteKeyHelp">
+							<small id="recaptchaSiteKeyHelp" class="form-text text-muted">This is the your reCAPTCHA Site Key.  Check out <a target="_blank" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a> to sign up for a free account.</small>
+						</div>
+						<div class="form-group">
+							<label for="">reCAPTCHA Secret Key</label>
+							<input type="text" class="form-control" name="recaptchaSecretKey" '.(!empty($recaptchaSecretKey) ? 'value='.$recaptchaSecretKey.'' : '').' aria-describedby="recaptchaSecretKeyHelp">
+							<small id="recaptchaSecretKeyHelp" class="form-text text-muted">This is the your reCAPTCHA Secret Key.  Check out <a target="_blank" href="https://www.google.com/recaptcha">https://www.google.com/recaptcha</a> to sign up for a free account.</small>
+						</div>
 						<input type="hidden" name="install" value=1" />
 						<button type="submit" class="btn btn-primary">Complete Installation</button>
 					</form>

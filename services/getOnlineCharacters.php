@@ -35,7 +35,7 @@
 
 	//If the user sent a search string from datatables, let's put it into the sql where clause
 	if(!empty($search["value"])){
-		$searchWhere = " and (charname like :searchValue or replace(name, '_', ' ') like :searchValue)";
+		$searchWhere = " and (charname like :searchValue or replace(name, '_', ' ') like :searchValue or bazaar_message like :searchValue)";
 
 	} else {
 		$searchWhere = '';
@@ -43,7 +43,7 @@
 
 	//Here's the SQL statement to return character information
 	$strSQL = '
-		SELECT charname , zone_settings.name, mjob, sjob, mlvl, slvl
+		SELECT charname , zone_settings.name, mjob, sjob, mlvl, slvl, bazaar_message
 		FROM chars, zone_settings, char_stats
 		WHERE chars.charid in (select charid from accounts_sessions) and chars.pos_zone = zone_settings.zoneid and chars.charid = char_stats.charid'.$searchWhere.'
 		ORDER BY '.$orderColVal.' '.$orderColGet[0]["dir"].'
@@ -89,21 +89,29 @@
 		        		break;
 		        	}
 		        	case ("mjob"):{
-		        		$innerjson .= '"Level '.$arr["mlvl"].' '.$jobNames[$value].' ('.strtoupper($jobAbbreviations[$value]).')",';
+		        		if(!empty($jobAbbreviations[$arr['sjob']])){
+		        			$innerjson .= '"'.$arr["mlvl"].' '.strtoupper($jobAbbreviations[$value]).'/'.$arr['slvl'].' '.strtoupper($jobAbbreviations[$arr['sjob']]).'",';
+		        		} else {
+		        			$innerjson .= '"'.$arr["mlvl"].' '.strtoupper($jobAbbreviations[$value]).'",';
+		        		}
 		        		break;
 		        	}
 		        	case ("sjob"):{
-		        		if($jobNames[$value] == ''){
+		        		/*if($jobNames[$value] == ''){
 		        				$innerjson .= '"",';
 		        		} else {
 		        				$innerjson .= '"Level '.$arr["slvl"].' '.$jobNames[$value].' ('.strtoupper($jobAbbreviations[$value]).')",';
-		        		}
+		        		}*/
 		        		break;
 		        	}
 		        	case("mlvl"):{
 		        		break;
 		        	}
 		        	case("slvl"):{
+		        		break;
+		        	}
+		        	case("bazaar_message"):{
+		        		$innerjson .= '"'.filter_var($value, FILTER_SANITIZE_FULL_SPECIAL_CHARS).'",';
 		        		break;
 		        	}
 		        	default: {
