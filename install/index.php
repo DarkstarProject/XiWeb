@@ -179,20 +179,37 @@
 	//These variables are for displaying the news items on the main page (will be changed to use a database in future versions)
 	//Set a newsTitle to an empty string to hide that news item
 	$newsTitle1 = \'News Title 1\';
-	$newsSummary1 = \'News Description 1: <b>HTML</b> is <i>allowed</i>\';
+	$newsSummary1 = \'
+		<div style="height:200px;background-image: url(\\\'themes/default/images/news/news1.jpg\\\');background-repeat:no-repeat;background-size:cover;"></div>
+		<p>News Summary 1: <b>HTML</b> is <i>allowed</i></p>
+	\';
 	$newsDetails1 = \'
-		News Details 1
+		<img src="themes/default/images/news/news1.jpg" style="height:300px;padding:10px" align="left"/>
+		<p style="padding:10px;">This is the description of the first news item.  Feel free to put whatever you want here.  This text can contain <b>HTML</b> tags.</p>
 	\';
+	$newsShow1 = TRUE;
+
 	$newsTitle2 = \'News Title 2\';
-	$newsSummary2 = \'News Description 2: <b>HTML</b> is <i>allowed</i>\';
+	$newsSummary2 = \'
+		<div style="width:100%;height:200px;background-image: url(\\\'themes/default/images/news/news2.jpg\\\');background-repeat:no-repeat;background-size:cover;"></div>
+		<p>News Description 2: <b>HTML</b> is <i>allowed</i></p>
+	\';
 	$newsDetails2 = \'
-		News Details 2
+		<img src="themes/default/images/news/news2.jpg" style="height:300px;padding:10px" align="left"/>
+		<p style="padding:10px;">This is the description of the second news item.  Feel free to put whatever you want here.  This text can contain <b>HTML</b> tags.</p>
 	\';
+	$newsShow2 = TRUE;
+
 	$newsTitle3 = \'News Title 3\';
-	$newsSummary3 = \'News Description 3: <b>HTML</b> is <i>allowed</i>\';
-	$newsDetails3 = \'
-		News Details 3
+	$newsSummary3 = \'
+		<div style="width:100%;height:200px;background-image: url(\\\'themes/default/images/news/news3.jpg\\\');background-repeat:no-repeat;background-size:cover;"></div>
+		<p>News Description 3: <b>HTML</b> is <i>allowed</i></p>
 	\';
+	$newsDetails3 = \'
+		<img src="themes/default/images/news/news3.jpg" style="height:300px;padding:10px" align="left"/>
+		<p style="padding:10px;">This is the description of the third news item.  Feel free to put whatever you want here.  This text can contain <b>HTML</b> tags.</p>
+	\';
+	$newsShow3 = TRUE;
 
 	$allowAccountRegistration = '.($newAccountRegistration ? 'TRUE' : 'FALSE').';
 	$useRecaptcha = '.($useRecaptcha ? 'TRUE' : 'FALSE').';

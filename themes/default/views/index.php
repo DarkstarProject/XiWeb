@@ -10,22 +10,19 @@
 
 			      <div class="container">
 				    <!-- Example row of columns -->
-				    <div class="row">
-				      <div class="col-md-4">
-				        <h2>'.$newsTitle1.'</h2>
-				        <p>'.$newsSummary1.'</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">More &raquo;</a></p>
-				      </div>
-				      <div class="col-md-4">
-				        <h2>'.$newsTitle2.'</h2>
-				        <p>'.$newsSummary2.'</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">More &raquo;</a></p>
-				      </div>
-				      <div class="col-md-4">
-				        <h2>'.$newsTitle3.'</h2>
-				        <p>'.$newsSummary3.'</p>
-				        <p><a class="btn btn-secondary" href="#" role="button">More &raquo;</a></p>
-				      </div>
+				    <div class="row">';
+
+				    for ($i = 0; $i <= sizeof($newsTitles) - 1; $i++) {
+    					$output .= '
+    						<div class="col-md-'.$newsCountColSize.'">
+				        		<h2>'.$newsTitles[$i].'</h2>
+				        		<p>'.$newsSummaries[$i].'</p>
+				        		<p><a class="btn btn-secondary" href="./news.php?newsID='.($i+1).'" role="button">More &raquo;</a></p>
+				      		</div>
+    					';
+					}
+				     
+	$output .= '		</div>
 				    </div>
 				  </div>
 

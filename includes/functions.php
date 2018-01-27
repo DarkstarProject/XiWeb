@@ -431,4 +431,30 @@ function getRealIPAddr()
     return $ip;
 }
 
+//This function will return the experience to get to the next level of a job
+function getJobExpToLevel($level){
+
+  global $db;
+
+  $strSQL = '
+    SELECT exp from exp_base where level = :level
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':level', $level);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+  }
+  else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if(!empty($arrReturn)){
+      return $arrReturn[0]["exp"];
+    } else {
+      return 0;
+    }
+  }
+
+}
+
 ?>

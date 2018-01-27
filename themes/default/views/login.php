@@ -39,6 +39,7 @@
 						<input type="password" class="form-control" name="password" placeholder="">
 					</div>
 					<button type="submit" class="btn btn-primary">Login</button>
+					'.($allowAccountRegistration ? '<a class="nav-link" href="register.php"><i>Register</i></a>' : '' ).'
 				</form>
 			</div>
 		</div>

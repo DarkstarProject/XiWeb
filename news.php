@@ -25,30 +25,31 @@
 
 	}
 
-	$newsTitles = [];
-	$newsSummaries = [];
-
-	if($newsShow1){
-		$newsTitles[] = $newsTitle1;
-		$newsSummaries[] = $newsSummary1;
-	}
-	if($newsShow2){
-		$newsTitles[] = $newsTitle2;
-		$newsSummaries[] = $newsSummary2;
-	}
-	if($newsShow3){
-		$newsTitles[] = $newsTitle3;
-		$newsSummaries[] = $newsSummary3;
-	}
-
-	if(sizeof($newsTitles) > 0) {
-		$newsCountColSize = 12 / sizeof($newsTitles);
+	$newsID = $_GET['newsID'];
+	$newsTitle = '';
+	$newsDetails = '';
+	switch($newsID){
+		case 1:{
+			$newsTitle = $newsTitle1;
+			$newsDetails = $newsDetails1;
+			break;
+		}
+		case 2:{
+			$newsTitle = $newsTitle2;
+			$newsDetails = $newsDetails2;
+			break;
+		}
+		case 3:{
+			$newsTitle = $newsTitle3;
+			$newsDetails = $newsDetails3;
+			break;
+		}
 	}
 
 	//These php files generate the html content to display
 	include_once('themes/'.$theme.'/views/header.php');
 	include_once('themes/'.$theme.'/views/navbar.php');
-	include_once('themes/'.$theme.'/views/index.php');
+	include_once('themes/'.$theme.'/views/news.php');
 	include_once('themes/'.$theme.'/views/footer.php');
 	echo $output;
 
