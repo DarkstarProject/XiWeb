@@ -6,17 +6,7 @@ body {
 }
 
 .jumbotron{
-	
-	background: linear-gradient(rgba(0,0,0,0.25),
-	 rgba(0,0,0,0.25)),
-	  url('../images/bg.jpg');
-	background-repeat: no-repeat;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
 	color:white;
-	background-position: 50% 50%;
 	padding:10px;
 }
 

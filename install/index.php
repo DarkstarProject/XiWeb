@@ -172,6 +172,8 @@
 	$site_name = \''.addslashes($serverName).'\';
 	$server_address = \''.$serverAddress.'\';
 
+	$bannerBackground = \'themes/default/images/bg.jpg\';
+
 	//These display text on the page
 	$frontpage_title = \'XIWeb Installation\';
 	$frontpage_message = \'This is the default front-page message for your XIWeb installation. To change this, please check the configuration file.\';
