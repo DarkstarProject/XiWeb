@@ -39,7 +39,7 @@
 
 	$output .= '
 
-		<div class="container">
+		<div class="container" style="padding-bottom:100px;">
 			<div class="card">
 				<div class="card-header">
     				Your Account Info
@@ -58,11 +58,16 @@
 						 </div>
 						 <div class="form-group">
 						    <label for="email">E-mail Address</label>
-						    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="'.$arrReturn[0]["email"].'">
+						    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" value="'.$arrReturn[0]["email"].'" required>
 						    <small id="emailHelp" class="form-text text-muted">This is the e-mail address associated with this account.</small>
 						 </div>
 						 <div class="form-group">
-						    <label for="email">Current Password</label>
+						    <label for="newPassword">Change Password</label>
+						    <input type="password" class="form-control" name="newPassword" aria-describedby="newPasswordHelp">
+						    <small id="newPasswordHelp" class="form-text text-muted">(Optional) Type in a new password here to change your password.</small>
+						 </div>
+						 <div class="form-group">
+						    <label for="password">Current Password</label>
 						    <input type="password" class="form-control" name="password" aria-describedby="passwordHelp" required>
 						    <small id="passwordHelp" class="form-text text-muted">To make changes to your account, please enter your current password.</small>
 						 </div>

@@ -41,7 +41,8 @@ $lang['error']['create_character'] = array(
 );
 
 $lang['error']['account'] = array(
-  'email_fail' => 'There was an error setting your e-mail address.'
+  'email_fail' => 'There was an error setting your e-mail address.',
+  'password_fail' => 'There was an error setting your new password.'
 );
 
 // General page errors
@@ -79,7 +80,8 @@ $lang['error']['character'] = array(
 );
 
 $lang['messages']['account'] = array(
-  'email_success' => 'Your e-mail address has been changed.'
+  'email_success' => 'Your e-mail address has been changed.',
+  'password_success' => 'Your password has been changed.'
 );
 
 $lang['error']['registration'] = array(

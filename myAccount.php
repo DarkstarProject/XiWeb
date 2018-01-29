@@ -30,10 +30,20 @@
 		        $_SESSION['errors']['account'][] = $lang['error']['auth']['invalid_login']; 
 	    	} else {
 
-	    		if(updateEmail($_SESSION['auth']['username'], $_POST['email']) == 0){
-	    			$_SESSION['errors']['account'][] = $lang['error']['account']['email_fail']; 
-	    		} else {
-	    			$_SESSION['messages']['account'][] = $lang['messages']['account']['email_success'];
+	    		if(!empty($_POST['email'])){
+	    			if(updateEmail($_SESSION['auth']['username'], $_POST['email']) == 0){
+		    			$_SESSION['errors']['account'][] = $lang['error']['account']['email_fail']; 
+		    		} else {
+		    			$_SESSION['messages']['account'][] = $lang['messages']['account']['email_success'];
+		    		}
+	    		}
+
+	    		if(!empty($_POST['newPassword'])){
+	    			if(updatePassword($_SESSION['auth']['username'], $_POST['newPassword']) == 0){
+		    			$_SESSION['errors']['account'][] = $lang['error']['account']['password_fail']; 
+		    		} else {
+		    			$_SESSION['messages']['account'][] = $lang['messages']['account']['password_success'];
+		    		}
 	    		}
 
 	    	}

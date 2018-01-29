@@ -117,10 +117,30 @@ function updateEmail($login, $email){
 
   global $db;
 
-  $strSQL = "Update accounts set email = :newEmail and timelastmodify = NOW() where login = :login";
+  $strSQL = "Update accounts set email = :newEmail, timelastmodify = now() where login = :login";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':newEmail', $email);
+  $statement->bindValue(':login', $login);
+
+  if (!$statement->execute()) {
+    return 0;
+  }
+  else {
+    return 1;
+  }
+
+}
+
+//This function will update the password for an account
+function updatePassword($login, $password){
+
+  global $db;
+
+  $strSQL = "Update accounts set password = PASSWORD(:newPassword), timelastmodify = now() where login = :login";
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':newPassword', $password);
   $statement->bindValue(':login', $login);
 
   if (!$statement->execute()) {
