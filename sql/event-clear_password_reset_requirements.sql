@@ -1,0 +1,1 @@
+CREATE DEFINER=`root`@`localhost` EVENT `clear_password_reset_requirements` ON SCHEDULE EVERY 1 HOUR STARTS now() ON COMPLETION NOT PRESERVE ENABLE DO Delete from password_reset_requests where requestdatetime < DATE_SUB(now(), INTERVAL 1 HOUR)
