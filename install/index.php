@@ -3,6 +3,8 @@
 	//Start the session
 	session_start();
 
+	$install_version = "1.0";
+
 	//Instantiate errors
 	$_SESSION['errors']['install'] = '';
 	$_SESSION['errors']['setup'] = '';
@@ -53,45 +55,71 @@
 	if (!empty($_POST['install'])) {
 
 		//Check to make sure we have everything.  It not, tell the user.  If so, continue on
-		if (empty($_POST['databaseHost']) || empty($_POST['databasePort']) || empty($_POST['databaseName']) || empty($_POST['serverName'])) {
+		if (empty($_POST['FFXIdatabaseHost']) || empty($_POST['FFXIdatabasePort']) || empty($_POST['FFXIdatabaseName']) || empty($_POST['FFXIdatabaseUser']) || $_POST['FFXIdatabasePassword'] ||
+			empty($_POST['XIWEBdatabaseName']) || empty($_POST['XIWEBdatabaseUser']) || $_POST['XIWEBdatabasePassword'] ||
+			empty($_POST['serverName'])) {
 			// If the required fields are empty, thrown an error.  Otherwise, repopulate the fields with them so the user doesn't have to type them back in
 			//Database Host
-    		if (empty($_POST['databaseHost'])) {
+    		if (empty($_POST['FFXIdatabaseHost'])) {
     			$_SESSION['errors']['install']['missing_host'] = $lang['error']['install']['missing_host'];
     		} else {
-    			$databaseHost = $_POST['databaseHost'];
+    			$databaseHost = $_POST['FFXIdatabaseHost'];
     		}
 
     		//Database Port
-    		if (!empty($_POST['databasePort'])) {
-		      $databasePort = $_POST['databasePort'];
+    		if (!empty($_POST['FFXIdatabasePort'])) {
+		      $databasePort = $_POST['FFXIdatabasePort'];
 		    }
 		    else {
 		      $databasePort = 3306;
 		    }
 
 		    //Database Username
-		    if (empty($_POST['databaseUser'])) {
+		    if (empty($_POST['FFXIdatabaseUser'])) {
 		      $_SESSION['errors']['install']['missing_user'] = $lang['error']['install']['missing_user'];
 		    }
 		    else {
-		      $databaseUser = $_POST['databaseUser'];
+		      $databaseUser = $_POST['FFXIdatabaseUser'];
 		    }
 
 		    //Database User Password
-		    if (empty($_POST['databaseUserPassword'])) {
+		    if (empty($_POST['FFXIdatabaseUserPassword'])) {
 		      $_SESSION['errors']['install']['missing_password'] = $lang['error']['install']['missing_password'];
 		    }
 		    else {
-		      $databaseUserPassword = $_POST['databaseUserPassword'];
+		      $databaseUserPassword = $_POST['FFXIdatabaseUserPassword'];
 		    }
 
 		    //Name of the database
-		    if (empty($_POST['databaseName'])) {
+		    if (empty($_POST['FFXIdatabaseName'])) {
 		      $_SESSION['errors']['install']['missing_database'] = $lang['error']['install']['missing_database'];
 		    }
 		    else {
-		      $databaseName = $_POST['databaseName'];
+		      $databaseName = $_POST['FFXIdatabaseName'];
+		    }
+
+		    //Database Username
+		    if (empty($_POST['XIWEBdatabaseUser'])) {
+		      $_SESSION['errors']['install']['missing_user'] = $lang['error']['install']['missing_user'];
+		    }
+		    else {
+		      $databaseUser = $_POST['XIWEBdatabaseUser'];
+		    }
+
+		    //Database User Password
+		    if (empty($_POST['XIWEBdatabaseUserPassword'])) {
+		      $_SESSION['errors']['install']['missing_password'] = $lang['error']['install']['missing_password'];
+		    }
+		    else {
+		      $databaseUserPassword = $_POST['XIWEBdatabaseUserPassword'];
+		    }
+
+		    //Name of the database
+		    if (empty($_POST['XIWEBdatabaseName'])) {
+		      $_SESSION['errors']['install']['missing_database'] = $lang['error']['install']['missing_database'];
+		    }
+		    else {
+		      $databaseName = $_POST['XIWEBdatabaseName'];
 		    }
 
 		    //Name of the FFXI server
@@ -133,11 +161,14 @@
 		} else {
 
 			//Looks like we got enough information to create the config.php file.  Let's do it!
-			$databaseHost = $_POST['databaseHost'];
-			(!empty($_POST['databasePort']) ? $databasePort = $_POST['databasePort'] : $databasePort = 3306);
-			$databaseUser = $_POST['databaseUser'];
-		    $databaseUserPassword = $_POST['databaseUserPassword'];
-			$databaseName = $_POST['databaseName'];
+			$FFXIdatabaseHost = $_POST['FFXIdatabaseHost'];
+			(!empty($_POST['FFXIdatabasePort']) ? $FFXIdatabasePort = $_POST['FFXIdatabasePort'] : $FFXIdatabasePort = 3306);
+			$FFXIdatabaseUser = $_POST['FFXIdatabaseUser'];
+		    $FFXIdatabaseUserPassword = $_POST['FFXIdatabaseUserPassword'];
+			$FFXIdatabaseName = $_POST['FFXIdatabaseName'];
+			$XIWEBdatabaseUser = $_POST['XIWEBdatabaseUser'];
+		    $XIWEBdatabaseUserPassword = $_POST['XIWEBdatabaseUserPassword'];
+			$XIWEBdatabaseName = $_POST['XIWEBdatabaseName'];
 			$serverName = $_POST['serverName'];
 			$serverAddress = $_POST['serverAddress'];
 			$newAccountRegistration = ($_POST['newAccountRegistration'] == 'on' ? TRUE : FALSE);
@@ -162,11 +193,14 @@
 	$language = \'en\';
 
 	//This is the connection information to the database
-	$db_host = \''.$databaseHost.'\';
-	$db_port = \''.$databasePort.'\';
-	$db_user = \''.$databaseUser.'\';
-	$db_pass = \''.$databaseUserPassword.'\';
-	$db_name = \''.$databaseName.'\';
+	$db_host = \''.$FFXIdatabaseHost.'\';
+	$db_port = \''.$FFXIdatabasePort.'\';
+	$FFXI_db_user = \''.$FFXIdatabaseUser.'\';
+	$FFXI_db_pass = \''.$FFXIdatabaseUserPassword.'\';
+	$FFXI_db_name = \''.$FFXIdatabaseName.'\';
+	$XIWEB_db_user = \''.$XIWEBdatabaseUser.'\';
+	$XIWEB_db_pass = \''.$XIWEBdatabaseUserPassword.'\';
+	$XIWEB_db_name = \''.$XIWEBdatabaseName.'\';
 
 	//This is the title displayed in the browser tab and the addres to check the status of the server
 	$site_name = \''.addslashes($serverName).'\';
@@ -217,6 +251,8 @@
 	$useRecaptcha = '.($useRecaptcha ? 'TRUE' : 'FALSE').';
 	$recaptchaSiteKey = \''.$recaptchaSiteKey.'\';
 	$recaptchaSecretKey = \''.$recaptchaSecretKey.'\';
+
+	$install_version = '.$install_version.';
 
 ?>				
 			';

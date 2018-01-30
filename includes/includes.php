@@ -4,8 +4,8 @@ session_start();
 //include_once('./lang/'.$language.'.inc.php');
 $_SESSION['errors'] = '';
 
-$db = new PDO('mysql:host='.$db_host.';dbname='.$db_name.';port='.$db_port.';charset=utf8', ''.$db_user.'', ''.$db_pass.'');
-//$xi = new PDO('mysql:host='.$db_host.';dbname='.$xi_name.';charset=utf8', ''.$db_user.'', ''.$db_pass.'');
+$db = new PDO('mysql:host='.$db_host.';dbname='.$FFXI_db_name.';port='.$db_port.';charset=utf8', ''.$FFXI_db_user.'', ''.$FFXI_db_pass.'');
+$xi = new PDO('mysql:host='.$db_host.';dbname='.$XIWEB_db_name.';charset=utf8', ''.$XIWEB_db_user.'', ''.$XIWEB_db_pass.'');
 
 // Character skill IDs (Combat, Ranged, Magic and Crafting)
 $skill_ids = array(
