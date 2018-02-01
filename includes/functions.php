@@ -101,7 +101,7 @@ function auctionHouseCount(){
 }
 
 //Used for debugging purposes to send console messages to the client browser
-function console_log( ...$messages ){
+function console_log($messages){
   $msgs = '';
   foreach ($messages as $msg) {
     $msgs .= json_encode($msg);
