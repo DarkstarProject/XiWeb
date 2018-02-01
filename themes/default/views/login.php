@@ -38,8 +38,15 @@
 						<label for="">Password</label>
 						<input type="password" class="form-control" name="password" placeholder="">
 					</div>
-					<button type="submit" class="btn btn-primary">Login</button>
-					'.($allowAccountRegistration ? '<a class="nav-link" href="register.php"><i>Register</i></a>' : '' ).'
+					<div class="row">
+						<div class="col-6" style="text-align:center">
+							<button type="submit" class="btn btn-primary">Login</button>
+						</div>
+						<div class="col-6">
+							'.($allowAccountRegistration ? '<a class="nav-link" style="margin:auto;text-align:center;" href="register.php"><i>Register</i></a>' : '' ).'
+						</div>
+					</div>
+					<a class="nav-link" style="margin:auto;text-align:center;" href="passwordResetStart.php"><i>Forgot Password</i></a>
 				</form>
 			</div>
 		</div>

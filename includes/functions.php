@@ -1,6 +1,13 @@
 <?php
 #ini_set("display_errors","Off");
 
+include_once('PHPMailer/SMTP.php');
+include_once('PHPMailer/PHPMailer.php');
+include_once('PHPMailer/Exception.php');
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
 //This function will attempt to login a user based on a username and password
 function doLogin($username,$password) {
   global $db;
@@ -475,6 +482,145 @@ function getJobExpToLevel($level){
     }
   }
 
+}
+
+function createPasswordRequest($account){
+
+  global $xi;
+
+  $strSQL = '
+    INSERT into password_reset_requests (accountid, requestdatetime, token) values (:accountid, now(), :token)
+  ';
+  $statement = $xi->prepare($strSQL);
+
+  $token = getToken(25);
+
+  $statement->bindValue(':accountid', $account);
+  $statement->bindValue(':token', $token);
+
+  if (!$statement->execute()) {
+    return 0;
+  } else {
+    sendPasswordResetEmail($account, $token);
+  }
+
+}
+
+function sendPasswordResetEmail($account, $token){
+
+  //include_once('./config.php');
+
+  $mail = new PHPMailer(true);
+
+  $email = getAccountEmail($account);
+
+  $headers = 'From: webmaster@somewhere.com';
+
+  $message = '
+    This e-mail was sent as a test.
+  ';
+
+  try {
+    //Server settings
+    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'localhost';                       // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'areallycoolguy14';       // SMTP username
+    $mail->Password = 'sliceinthehouse';                     // SMTP password
+    //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 25;                                    // TCP port to connect to
+
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+
+    //Recipients
+    $mail->setFrom('from@example.com', 'Mailer');
+    $mail->addAddress($email, 'Joe User');     // Add a recipient
+    //$mail->addAddress('ellen@example.com');               // Name is optional
+    //$mail->addReplyTo('info@example.com', 'Information');
+    //$mail->addCC('cc@example.com');
+    //$mail->addBCC('bcc@example.com');
+
+    //Attachments
+    //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
+    //Content
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+}
+
+  /*if(mail($email, 'Password Reset Request', $message, $headers)){
+    return 1;
+  } else {
+    return 0;
+  }*/
+
+}
+
+function getAccountEmail($account){
+
+  global $db;
+
+  $strSQL = '
+    SELECT email from accounts where id = :accountID
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue('accountID', $account);
+
+  if($statement->execute()){
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $arrReturn[0]['email'];
+  } else {
+
+  }
+
+}
+
+//https://stackoverflow.com/questions/1846202/php-how-to-generate-a-random-unique-alphanumeric-string
+function getToken($length)
+{
+    $token = "";
+    $codeAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $codeAlphabet.= "abcdefghijklmnopqrstuvwxyz";
+    $codeAlphabet.= "0123456789";
+    $max = strlen($codeAlphabet); // edited
+
+    for ($i=0; $i < $length; $i++) {
+        $token .= $codeAlphabet[crypto_rand_secure(0, $max-1)];
+    }
+
+    return $token;
+}
+
+//https://stackoverflow.com/questions/1846202/php-how-to-generate-a-random-unique-alphanumeric-string
+function crypto_rand_secure($min, $max)
+{
+    $range = $max - $min;
+    if ($range < 1) return $min; // not so random...
+    $log = ceil(log($range, 2));
+    $bytes = (int) ($log / 8) + 1; // length in bytes
+    $bits = (int) $log + 1; // length in bits
+    $filter = (int) (1 << $bits) - 1; // set all lower bits to 1
+    do {
+        $rnd = hexdec(bin2hex(openssl_random_pseudo_bytes($bytes)));
+        $rnd = $rnd & $filter; // discard irrelevant bits
+    } while ($rnd > $range);
+    return $min + $rnd;
 }
 
 ?>

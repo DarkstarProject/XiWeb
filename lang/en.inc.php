@@ -97,3 +97,12 @@ $lang['error']['registration'] = array(
 $lang['message']['registration'] = array(
   'account_created' => 'Your account has been created!'
 );
+
+$lang['error']['password_reset'] = array(
+  'account_not_found' => 'That account does not exist.',
+  'general_error' => 'There was an error generating the password reset request.'
+);
+
+$lang['message']['password_reset'] = array(
+  'success' => 'An e-mail has been sent to your e-mail address to reset your password.'
+);
