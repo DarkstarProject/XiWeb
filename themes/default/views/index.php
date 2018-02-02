@@ -6,9 +6,22 @@
 			          <h1 class="display-3">'.$frontpage_title.'</h1>
 			          <p>'.$frontpage_message.'</p>
 			        </div>
-			      </div>
+			      </div>';
 
-			      <div class="container">
+	//If there were errors, let's show them.
+	if(!empty($_SESSION['errors']['install'])){
+		
+		foreach ($_SESSION['errors']['install'] as $error) {
+     		$output .= '
+				<div class="container alert alert-danger">
+					'.$error.'
+				</div>
+			';
+    	}
+
+	}
+
+	$output .= '    <div class="container">
 				    <!-- Example row of columns -->
 				    <div class="row">';
 

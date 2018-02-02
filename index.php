@@ -1,11 +1,15 @@
 <?php
 
+	//This is the required version of the config file.  This will be updated as the installation process is updated to make sure
+	//the user is notified to update his or her config file to make it compatible
+	$requiredConfigVersion = '1.0';
+
 	//Check if the config.php file has already been created.
 	//If so, include it, otherwise display an error message
 	if (file_exists('config.php')) {
 		include_once('config.php');
 	} else {
-		$_SESSION['errors']['general'] = $lang['error']['config'];
+		//$_SESSION['errors']['general'] = $lang['error']['config'];
 	}
 
 	//If the system is installed, proceed
@@ -14,13 +18,19 @@
 	if (defined('INSTALLED')) {
 
 		//includes.php
+		include_once('./lang/'.$language.'.inc.php');
 		include_once('includes/includes.php');
   		include_once('includes/functions.php');
+
+  		//Check Version
+		if(empty($configVersion) || $configVersion != $requiredConfigVersion){
+			$_SESSION['errors']['install'][] = $lang['error']['install']['invalid_config_file_version'];
+		}
 
 	} else {
 
 		// If the config file exists, but the system is not installed, throw an error and redirect to the install directory
-  		$_SESSION['errors']['install'] = $lang['error']['install']['not_installed'];
+  		$_SESSION['errors']['install'][] = $lang['error']['install']['not_installed'];
   		header("Location: install/index.php");
 
 	}

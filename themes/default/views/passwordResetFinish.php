@@ -36,22 +36,30 @@
 
 	}
 
-	$output .= '
-		<div class="card bg-light mb-3 col-sm-6" style="margin:0 auto;float: none;margin-bottom:10px">
-			<div class="card-header">Password Reset</div>
-			<div class="card-body">
-				<span>Please enter your account name or account e-mail address and click Reset to issue a password reset request.  You will then receive an e-mail associated with your account with a link to reset your password.  You will have 1 to 2 hours to complete the password reset.</span>
-				<p></p>
-				<form method="post" action="./passwordResetStart.php">
-					<input type="hidden" name="resetPassword" value="1" />
-					<div class="form-group">
-						<label for="">Username</label>
-						<input type="text" class="form-control" name="username" placeholder="">
-					</div>
-					<button type="submit" class="btn btn-primary">Reset</button>
-				</form>
-			</div>	
-		</div>
-	';
+	if($showPasswordReset){
+		$output .= '
+			<div class="card bg-light mb-3 col-sm-6" style="margin:0 auto;float: none;margin-bottom:10px">
+				<div class="card-header">Password Reset</div>
+				<div class="card-body">
+					<span>Please enter your new password.</span>
+					<p></p>
+					<form method="post" action="./passwordResetFinish.php?account='.$accountID.'&token='.$token.'">
+						<input type="hidden" name="resetPassword" value="1" />
+						<input type="hidden" name="account" value="'.$accountID.'" />
+						<input type="hidden" name="token" value="'.$token.'" />
+						<div class="form-group">
+							<label for="">New Password</label>
+							<input type="password" class="form-control" name="newPassword" placeholder="">
+						</div>
+						<div class="form-group">
+							<label for="">Confirm New Password</label>
+							<input type="password" class="form-control" name="newPasswordConfirm" placeholder="">
+						</div>
+						<button type="submit" class="btn btn-primary">Reset</button>
+					</form>
+				</div>	
+			</div>
+		';
+	}
 
 ?>

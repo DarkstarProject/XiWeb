@@ -6,7 +6,7 @@
 		include_once('config.php');
 	}
 	else {
-		$_SESSION['errors']['general'] = $lang['error']['config'];
+		//$_SESSION['errors']['general'] = $lang['error']['config'];
 	}
 
 	// If the system is installed, let's proceed
@@ -53,6 +53,8 @@
 
   		}
 
+	} else {
+		header("Location: install/index.php");
 	}
 
 	//These php files generate the html content to display

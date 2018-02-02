@@ -158,6 +158,41 @@
 		      $recaptchaSecretKey = $_POST['recaptchaSecretKey'];
 		    }
 
+		    //SMTPEmailHost
+		    if (!empty($_POST['SMTPEmailHost'])) {		      
+		      $SMTPEmailHost = $_POST['SMTPEmailHost'];
+		    }
+
+		    //SMTPEmailPort
+		    if (!empty($_POST['SMTPEmailPort'])) {		      
+		      $SMTPEmailPort = $_POST['SMTPEmailPort'];
+		    }
+
+		    //SMTPEmailUsername
+		    if (!empty($_POST['SMTPEmailUsername'])) {
+		      $SMTPEmailUsername = $_POST['SMTPEmailUsername'];
+		    }
+
+		    //SMTPEmailPassword
+		    if (!empty($_POST['SMTPEmailPassword'])) {
+		      $SMTPEmailPassword = $_POST['SMTPEmailPassword'];
+		    }
+
+		    //SMTPEmailSecurity
+		    if (!empty($_POST['SMTPEmailSecurity'])) {
+		      $SMTPEmailSecurity = $_POST['SMTPEmailSecurity'];
+		    }
+
+		    //SMTPEmailFromAddress
+		    if (!empty($_POST['SMTPEmailFromAddress'])) {
+		      $SMTPEmailFromAddress = $_POST['SMTPEmailFromAddress'];
+		    }
+
+		    //allowPasswordReset
+		    if (!empty($_POST['allowPasswordReset'])) {
+		      $allowPasswordReset = $_POST['allowPasswordReset'];
+		    }
+
 		} else {
 
 			//Looks like we got enough information to create the config.php file.  Let's do it!
@@ -175,6 +210,13 @@
 			$useRecaptcha = ($_POST['useRecaptcha'] == 'on' ? TRUE : FALSE);
 			$recaptchaSiteKey = $_POST['recaptchaSiteKey'];
 		    $recaptchaSecretKey = $_POST['recaptchaSecretKey'];
+		    $SMTPEmailHost = $_POST['SMTPEmailHost'];
+		    $SMTPEmailPort = $_POST['SMTPEmailPort'];
+		    $SMTPEmailUsername = $_POST['SMTPEmailUsername'];
+		    $SMTPEmailPassword = $_POST['SMTPEmailPassword'];
+		    $SMTPEmailSecurity = $_POST['SMTPEmailSecurity'];
+		    $SMTPEmailFromAddress = $_POST['SMTPEmailFromAddress'];
+		    $allowPasswordReset = $_POST['allowPasswordReset'];
 
 			//Contents of the config.php file
 			$write_contents = '
@@ -251,6 +293,14 @@
 	$useRecaptcha = '.($useRecaptcha ? 'TRUE' : 'FALSE').';
 	$recaptchaSiteKey = \''.$recaptchaSiteKey.'\';
 	$recaptchaSecretKey = \''.$recaptchaSecretKey.'\';
+
+	$SMTPEmailHost = \''.$SMTPEmailHost.'\';
+    $SMTPEmailPort = \''.$SMTPEmailPort.'\';
+    $SMTPEmailUsername = \''.$SMTPEmailUsername.'\';
+    $SMTPEmailPassword = \''.$SMTPEmailPassword.'\';
+    $SMTPEmailSecurity = \''.$SMTPEmailSecurity.'\';
+    $SMTPEmailFromAddress = \''.$SMTPEmailFromAddress.'\';
+    $allowPasswordReset = \''.$allowPasswordReset.'\';
 
 	$install_version = '.$install_version.';
 

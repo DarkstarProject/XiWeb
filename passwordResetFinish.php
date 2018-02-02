@@ -5,8 +5,10 @@
 	if (file_exists('config.php')) {
 		include_once('config.php');
 	} else {
-		$_SESSION['errors']['general'] = $lang['error']['config'];
+		//$_SESSION['errors']['general'] = $lang['error']['config'];
 	}
+
+	$showPasswordReset = false;
 
 	//If the system is installed, proceed
 	//'INSTALLED' is defined in the config.php file
@@ -18,24 +20,47 @@
 		include_once('includes/includes.php');
   		include_once('includes/functions.php');
 
-  		/*unset($_SESSION['messages']);
+  		unset($_SESSION['messages']);
 		unset($_SESSION['errors']);
 
-  		//If the user is trying to reset password, let's give it a go
-  		if (!empty($_POST['resetPassword'])) {
+		//If the user is trying to reset password, let's give it a go
+		if(!empty($_POST['resetPassword'])){
 
-  			$accountID = getAccountID($_POST['username']);
-  			if($accountID == 0){
-  				$_SESSION['errors']['password_reset'][] = $lang['error']['password_reset']['account_not_found'];
-  			} else {
-  				if(createPasswordRequest($accountID) == 0){
+			$accountID = $_POST['account'];
+  			$token = $_POST['token'];
+  			$newPassword = $_POST['newPassword'];
+  			$newPasswordConfirm = $_POST['newPasswordConfirm'];
+
+  			if(!empty($accountID) && !empty($token)){
+  				if(validatePasswordRequest($accountID, $token) == 0){
   					$_SESSION['errors']['password_reset'][] = $lang['error']['password_reset']['general_error'];
   				} else {
-  					$_SESSION['messages']['password_reset'][] = $lang['message']['password_reset']['success'];
+  					if($newPassword != $newPasswordConfirm){
+  						$_SESSION['errors']['password_reset'][] = $lang['error']['password_reset']['password_match'];
+  					} else {
+  						if(resetAccountPassword($accountID, $newPassword) == 0){
+  							$_SESSION['errors']['password_reset'][] = $lang['error']['password_reset']['general_error'];
+  						} else {
+  							$_SESSION['messages']['password_reset'][] = $lang['message']['password_reset']['success_done'];
+  						}
+  					}
+  				}
+  			}			
+
+		} else if (!empty($_GET['account'])) {
+
+  			$accountID = $_GET['account'];
+  			$token = $_GET['token'];
+  			
+  			if(!empty($accountID) && !empty($token)){
+  				if(validatePasswordRequest($accountID, $token) == 0){
+  					$_SESSION['errors']['password_reset'][] = $lang['error']['password_reset']['general_error'];
+  				} else {
+  					$showPasswordReset = true;
   				}
   			}
 
-  		}*/
+  		}
 
 	} else {
 

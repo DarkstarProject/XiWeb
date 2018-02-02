@@ -501,47 +501,87 @@ function createPasswordRequest($account){
   if (!$statement->execute()) {
     return 0;
   } else {
-    sendPasswordResetEmail($account, $token);
+    $result = sendPasswordResetEmail($account, $token);
+    return $result;
   }
 
 }
 
 function sendPasswordResetEmail($account, $token){
 
-  //include_once('./config.php');
+  include_once('config.php');
 
+  global $db;
+  global $SMTPEmailFromAddress;
+  global $site_name;
+  global $SMTPEmailHost;
+  global $SMTPEmailUsername;
+  global $SMTPEmailPassword;
+  global $SMTPEmailSecurity;
+  global $SMTPEmailPort;
+
+  $accountName = '';
+
+  $strSQL = '
+    SELECT login from accounts where id = :accountID
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':accountID', $account);
+
+  if (!$statement->execute()) {
+    //watchdog($statement->errorInfo(),'SQL');
+    return 0;
+  } else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    $accountName = $arrReturn[0]['login'];
+  }
+
+  //Create a PHP Mailer mail object
   $mail = new PHPMailer(true);
 
+  //Get the email of the user by their chair
   $email = getAccountEmail($account);
 
-  $headers = 'From: webmaster@somewhere.com';
+  //If a character doesn't have an e-mail, stop here
+  if(empty($email)){
+    return 0;
+  }
 
+  //From Header
+  $headers = 'From: '.$SMTPEmailFromAddress;
+
+  //Generate the URL based on token and userid
+  $resetURL = isset($_SERVER['HTTPS']) ? "https" : "http" . "://".str_replace("Start.php", "Finish.php", $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."?account=".$account.'&token='.$token);
+
+  //Generate the Email Message Body
   $message = '
-    This e-mail was sent as a test.
+    <p>A password reset request has been sent from '.$site_name.' for the account '.$accountName.' associated with '.$email.'.  Please click the link below to finish the password reset request.</p>
+    <p><a href="'.$resetURL.'">'.$resetURL.'</a></p>
   ';
 
   try {
     //Server settings
     $mail->SMTPDebug = 0;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'localhost';                       // Specify main and backup SMTP servers
+    $mail->Host = $SMTPEmailHost;                         // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'areallycoolguy14';       // SMTP username
-    $mail->Password = 'sliceinthehouse';                     // SMTP password
-    //$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 25;                                    // TCP port to connect to
+    $mail->Username = $SMTPEmailUsername;                 // SMTP username
+    $mail->Password = $SMTPEmailPassword;                 // SMTP password
+    $mail->SMTPSecure = $SMTPEmailSecurity;               // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = $SMTPEmailPort;                         // TCP port to connect to
 
-    $mail->SMTPOptions = array(
+    /*$mail->SMTPOptions = array(
         'ssl' => array(
             'verify_peer' => false,
             'verify_peer_name' => false,
             'allow_self_signed' => true
         )
-    );
+    );*/
 
     //Recipients
-    $mail->setFrom('from@example.com', 'Mailer');
-    $mail->addAddress($email, 'Joe User');     // Add a recipient
+    $mail->setFrom($SMTPEmailFromAddress, $site_name);
+    $mail->addAddress($email, $accountName);     // Add a recipient
     //$mail->addAddress('ellen@example.com');               // Name is optional
     //$mail->addReplyTo('info@example.com', 'Information');
     //$mail->addCC('cc@example.com');
@@ -553,21 +593,19 @@ function sendPasswordResetEmail($account, $token){
 
     //Content
     $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $mail->Subject = 'Password Reset Request';
+    $mail->Body    = $message;
+    $mail->AltBody = $message;
 
     $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-}
+    //echo 'Message has been sent';
 
-  /*if(mail($email, 'Password Reset Request', $message, $headers)){
     return 1;
-  } else {
+
+} catch (Exception $e) {
+    //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
     return 0;
-  }*/
+}
 
 }
 
@@ -621,6 +659,73 @@ function crypto_rand_secure($min, $max)
         $rnd = $rnd & $filter; // discard irrelevant bits
     } while ($rnd > $range);
     return $min + $rnd;
+}
+
+//This function will check the password_reset_requests table in the xiweb database to make sure that a use is correctly entered to reset their password
+function validatePasswordRequest($account, $token){
+
+  global $xi;
+
+  $strSQL = '
+    Select * from password_reset_requests where accountid = :accountid and token = :token
+  ';
+  $statement = $xi->prepare($strSQL);
+
+  $statement->bindValue(':accountid', $account);
+  $statement->bindValue(':token', $token);
+
+  if (!$statement->execute()) {
+    return 0;
+  } else {
+    $arrReturn = $statement->fetchAll(PDO::FETCH_ASSOC);
+    if(sizeOf($arrReturn) == 0){
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+}
+
+//This function will update a user's password
+function resetAccountPassword($account, $password){
+
+  global $db;
+
+  $strSQL = '
+    Update accounts set password = PASSWORD(:password) where id = :accountid
+  ';
+  $statement = $db->prepare($strSQL);
+
+  $statement->bindValue(':accountid', $account);
+  $statement->bindValue(':password', $password);
+
+  if($statement->execute()){
+    $result = removePasswordRequest($account);
+    return $result;
+  } else {
+    return 0;
+  }
+
+}
+
+function removePasswordRequest($account){
+
+  global $xi;
+
+  $strSQL = '
+    Delete from password_reset_requests where accountid = :accountid
+  ';
+  $statement = $xi->prepare($strSQL);
+
+  $statement->bindValue(':accountid', $account);
+
+  if (!$statement->execute()) {
+    return 0;
+  } else {
+    return 1;
+  }
+
 }
 
 ?>

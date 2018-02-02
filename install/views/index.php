@@ -116,6 +116,51 @@
 							</div>
 						</div>
 						<p></p>
+						<div class="container" style="border:5px solid;border-radius:20px;">
+							<h2>Email Configuration</h2>
+							<h4>These are optional settings if you want XIWeb to send e-mails, such as for Password Reset Requests</h4>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Email Host</label>
+								<input type="text" class="form-control" name="SMTPEmailHost" '.(!empty($SMTPEmailHost) ? 'value='.$SMTPEmailHost.'' : '').'>
+								<small class="form-text text-muted">This is a SMTP (simple mail transfer protocol) host that you will use to send e-mails.  You can use public e-mail services like gmail or hotmail, or setup your own e-mail server.  For more information about using gmail, see here: <a target="_blank" href="https://www.digitalocean.com/community/tutorials/how-to-use-google-s-smtp-server">GMail SMTP Guide from DigitalOcean.com</a></small>
+							</div>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Email Port</label>
+								<input type="text" class="form-control" name="SMTPEmailPort" '.(!empty($SMTPEmailPort) ? 'value='.$SMTPEmailPort.'' : '').'>
+								<small class="form-text text-muted">This is the port to connect to your SMTP server.</a></small>
+							</div>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Email Username</label>
+								<input type="text" class="form-control" name="SMTPEmailUsername" '.(!empty($SMTPEmailUsername) ? 'value='.$SMTPEmailUsername.'' : '').'>
+								<small class="form-text text-muted">This is the username to connect to your SMTP server.</a></small>
+							</div>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Email Password</label>
+								<input type="password" class="form-control" name="SMTPEmailPassword" '.(!empty($SMTPEmailPassword) ? 'value='.$SMTPEmailPassword.'' : '').'>
+								<small class="form-text text-muted">This is the password to connect to your SMTP server.</a></small>
+							</div>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Security</label>
+								<select class="form-control" name="SMTPEmailSecurity" '.(!empty($SMTPEmailSecurity) ? 'value='.$SMTPEmailSecurity.'' : '').'>
+									<option>None</option>
+									<option>TLS</option>
+									<option>SSL</option>
+								</select>
+								<small class="form-text text-muted">This is the security setting on your SMTP Server.</a></small>
+							</div>
+							<div class="form-group" style="padding-top:10px">
+								<label for="">SMTP Email From Address</label>
+								<input type="email" class="form-control" name="SMTPEmailFromAddress" '.(!empty($SMTPEmailFromAddress) ? 'value='.$SMTPEmailFromAddress.'' : '').'>
+								<small class="form-text text-muted">This is the e-mail address that will display in the "From" field of your e-mails.</a></small>
+							</div>
+							<div class="form-check">
+								<input type="checkbox" class="form-check-input" name="allowPasswordReset" '.(!empty($allowPasswordReset) ? 'value='.$allowPasswordReset.'' : '').'>
+								<label class="form-check-label"> Allow Password Reset Requests</label>
+								<small class="form-text text-muted">If this is checked, users will see a Forget Password link and will be able to reset their passwords via e-mail.</small>
+							</div>
+							<p></p>
+						</div>
+						<p></p>
 						<input type="hidden" name="install" value=1" />
 						<button type="submit" class="btn btn-primary">Complete Installation</button>
 					</form>

@@ -67,7 +67,8 @@ $lang['error']['install'] = array(
   'missing_password' => 'Your MySQL password cannot be left blank.',
   'missing_host' => 'Your MySQL hostname cannot be left blank.',
   'missing_servername' => 'Your DSP Server name cannot be left blank.',
-  'missing_serveraddress' => 'Your DSP server address cannot be left blank.'
+  'missing_serveraddress' => 'Your DSP server address cannot be left blank.',
+  'invalid_config_file_version' => 'Your config file is out of date.  Please delete it and complete the installation again.'
 );
 
 $lang['text']['general'] = array(
@@ -100,9 +101,11 @@ $lang['message']['registration'] = array(
 
 $lang['error']['password_reset'] = array(
   'account_not_found' => 'That account does not exist.',
-  'general_error' => 'There was an error generating the password reset request.'
+  'general_error' => 'There was an error generating the password reset request.',
+  'match' => 'The given passwords do not match.'
 );
 
 $lang['message']['password_reset'] = array(
-  'success' => 'An e-mail has been sent to your e-mail address to reset your password.'
+  'success' => 'An e-mail has been sent to your e-mail address to reset your password.',
+  'success_done' => 'Your password has been reset.'
 );
