@@ -117,7 +117,7 @@ function updateEmail($login, $email){
 
   global $db;
 
-  $strSQL = "Update accounts set email = :newEmail and timelastmodify = NOW() where login = :login";
+  $strSQL = "Update accounts set email = '$email' , timelastmodify = NOW() where login = '$login'";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':newEmail', $email);
