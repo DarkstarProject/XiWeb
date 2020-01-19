@@ -5,14 +5,14 @@
 function doLogin($username,$password) {
   global $db;
 
-  $strSQL = "SELECT * FROM accounts WHERE (login = :username OR email = :username) AND password = PASSWORD(:password)";
+  $strSQL = "SELECT * FROM accounts WHERE (login = :username OR current_email = :username) AND password = PASSWORD(:password)";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':username',$_POST['username']);
   $statement->bindValue(':password',$_POST['password']);
 
   if (!$statement->execute()) { 
-    //watchdog($statement->errorInfo(),'SQL'); 
+    watchdog($statement->errorInfo(),'SQL'); 
   }
   else {
     $arrReturn = $statement->fetchAll(); 
@@ -117,7 +117,7 @@ function updateEmail($login, $email){
 
   global $db;
 
-  $strSQL = "Update accounts set email = :newEmail , timelastmodify = NOW() where login = :login";
+  $strSQL = "Update accounts set current_email = :newEmail , timelastmodify = NOW() where login = :login";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':newEmail', $email);
@@ -351,7 +351,7 @@ function createAccount($account,$password,$email) {
   
   $id = getMaxAccountID() + 1;
   
-  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`email`, timecreate, timelastmodify) VALUES(:id,:login,PASSWORD('$password'),:email, NOW(), NOW())";
+  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`current_email`, 'registration_email', timecreate, timelastmodify) VALUES(:id,:login,PASSWORD('$password'),:email, :email, NOW(), NOW())";
   $statement = $db->prepare($strSQL);
   $statement->bindValue(':id',$id);
   $statement->bindValue(':login',$account);
@@ -370,7 +370,7 @@ function createAccount($account,$password,$email) {
 function getAccountID($account) {
   global $db;
 
-  $strSQL = "SELECT id FROM accounts WHERE login = :username OR email = :username";
+  $strSQL = "SELECT id FROM accounts WHERE login = :username OR current_email = :username";
   $statement = $db->prepare($strSQL);
 
   $statement->bindValue(':username',$account);
