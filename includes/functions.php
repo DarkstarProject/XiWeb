@@ -351,7 +351,7 @@ function createAccount($account,$password,$email) {
   
   $id = getMaxAccountID() + 1;
   
-  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`current_email`, 'registration_email', timecreate, timelastmodify) VALUES(:id,:login,PASSWORD('$password'),:email, :email, NOW(), NOW())";
+  $strSQL = "INSERT INTO accounts (`id`,`login`,`password`,`current_email`, `registration_email`, timecreate, timelastmodify) VALUES(:id,:login,PASSWORD('$password'),:email, :email, NOW(), NOW())";
   $statement = $db->prepare($strSQL);
   $statement->bindValue(':id',$id);
   $statement->bindValue(':login',$account);
